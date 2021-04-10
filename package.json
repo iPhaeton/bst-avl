@@ -4,7 +4,8 @@
   "description": "Balanced binary search tree (AVL implementation)",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/iPhaeton/bst-avl/issues"
   },
-  "homepage": "https://github.com/iPhaeton/bst-avl#readme"
+  "homepage": "https://github.com/iPhaeton/bst-avl#readme",
+  "devDependencies": {
+    "typescript": "^4.2.4"
+  }
 }
