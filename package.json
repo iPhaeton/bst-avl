@@ -1,0 +1,26 @@
+{
+  "name": "bst-avl",
+  "version": "1.0.0",
+  "description": "Balanced binary search tree (AVL implementation)",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iPhaeton/bst-avl.git"
+  },
+  "keywords": [
+    "binary",
+    "search",
+    "tree",
+    "bst",
+    "avl"
+  ],
+  "author": "Ilya Bohaslauchyk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iPhaeton/bst-avl/issues"
+  },
+  "homepage": "https://github.com/iPhaeton/bst-avl#readme"
+}
