@@ -4,18 +4,20 @@ import { getH, getSpaces } from "./utils";
 
 export class Plotter<T extends Tree<any>> implements PlotterInterface<T> {
     private plotNodes(nodes: Array<Node<any> | null>, level: number, h: number) {
-        // console.log(nodes.map(n => n?.map()));
-        const splitLine = getSpaces(1 * Math.pow(2, h - level));
+        const splitLine = getSpaces(2 * Math.pow(2, h - level));
 
-        const line1 = nodes.reduce((line, node) => `${line}${splitLine}${node?.key || ''}   `, '');
-        console.log(line1);
-        const { line: line2, children } = nodes.reduce(({ line, children }, node) => {
-            node && children.push(node.left);
-            node && children.push(node.right);
-            return { line: `${line}   / \\   `, children };
-        }, { line: '', children: [] } as { line: string, children: Array<Node<any> | null> });
+        const { line, children } = nodes.reduce(({ line, children }, node) => {
+            node ? children.push(node.left) : children.push(null);
+            node ? children.push(node.right) : children.push(null);
+            return { line: `${line}${splitLine}${node?.key || ' '}${splitLine}`, children };
+        }, {
+            line: '', children: [],
+        } as { line: string, children: Array<Node<any> | null> });
+        console.log(line)
+        console.log('');
+        console.log('');
 
-        if (children.length) {
+        if (children.some(n => n !== null)) {
             this.plotNodes(children, level + 1, h);
         }
     }
