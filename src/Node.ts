@@ -15,4 +15,20 @@ export class Node<T> {
     map() {
         return this.value;
     }
+
+    _checkRI() {
+        if (this.left) {
+            if (this.left.key > this.key) throw new Error(`Representation invariant failed at node ${this.key}. Left child has key ${this.left.key}`);
+            if (this.left.parent !== this) throw new Error(`Representation invariant failed at node ${this.key}. Left child has a wrong parent.`)
+            this.left._checkRI();
+        }
+
+        if (this.right) {
+            if (this.right.key < this.key) throw new Error(`Representation invariant failed at node ${this.key}. Right child has key ${this.right.key}`)
+            if (this.right.parent !== this) throw new Error(`Representation invariant failed at node ${this.key}. Right child has a wrong parent.`)
+            this.right._checkRI();
+        }
+
+        return true;
+    }
 }

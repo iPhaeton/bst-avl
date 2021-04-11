@@ -10,4 +10,4 @@ tree.insert(new Node(4, 4));
 tree.insert(new Node(16, 16));
 tree.insert(new Node(15, 15));
 tree.insert(new Node(42, 42));
-tree.plot();
+console.log(tree._checkRI());

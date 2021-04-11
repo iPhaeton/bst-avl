@@ -37,4 +37,9 @@ export class BST<T> {
     plot() {
         this.plotter.plot(this);
     }
+
+    _checkRI() {
+        this.root?._checkRI();
+        return true;
+    }
 }
