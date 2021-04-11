@@ -1,4 +1,8 @@
 export class Node<T> {
+    public parent: Node<T> | null;
+    public left: Node<T> | null;
+    public right: Node<T> | null;
+
     constructor(
         public readonly key: number,
         private readonly value: T,
@@ -7,30 +11,6 @@ export class Node<T> {
         this.left = null;
         this.right = null;
     };
-
-    set parent(v: Node<T> | null) {
-        this.parent = v;
-    }
-
-    get parent() {
-        return this.parent;
-    }
-
-    set left(v: Node<T> | null) {
-        this.left = v;
-    }
-
-    get left() {
-        return this.left;
-    }
-
-    set right(v: Node<T> | null) {
-        this.right = v;
-    }
-
-    get right() {
-        return this.right;
-    }
 
     map() {
         return this.value;
