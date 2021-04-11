@@ -1,9 +1,20 @@
 import { Node } from './Node';
+import { Plotter } from './Plotter';
 
 export class BST<T> {
-    private root: Node<T> | null = null;
+    public root: Node<T> | null = null;
 
-    constructor() { };
+    constructor(private readonly plotter: Plotter<BST<T>> = new Plotter()) { };
+
+    private appendOrReturnChild(parent: Node<T>, child: Node<T>, side: 'left' | 'right') {
+        if (parent[side] === null) {
+            parent[side] = child;
+            child.parent = parent;
+            return null;
+        } else {
+            return parent.left;
+        }
+    };
 
     insert(node: Node<T>) {
         if (this.root === null) {
@@ -23,32 +34,7 @@ export class BST<T> {
         return node;
     }
 
-    private appendOrReturnChild(parent: Node<T>, child: Node<T>, side: 'left' | 'right') {
-        if (parent[side] === null) {
-            parent[side] = child;
-            child.parent = parent;
-            return null;
-        } else {
-            return parent.left;
-        }
-    };
-
     plot() {
-        this.root && this.plotNodes([this.root]);
-    }
-
-    private plotNodes(nodes: Node<T>[]) {
-        const line1 = nodes.reduce((line, node) => `${line}   ${node.key}   `, '');
-        console.log(line1);
-        const { line: line2, children } = nodes.reduce(({ line, children }, node) => {
-            node.left && children.push(node.left);
-            node.right && children.push(node.right);
-            return { line: `${line}   / \\   `, children };
-        }, { line: '', children: [] } as { line: string, children: Node<T>[] });
-        console.log(line2);
-
-        if (children.length) {
-            this.plotNodes(children);
-        }
+        this.plotter.plot(this);
     }
 }
