@@ -13,11 +13,11 @@ export class BST<T> {
             child.parent = parent;
             return null;
         } else {
-            return parent.left;
+            return parent[side];
         }
     };
 
-    insert(node: Node<T>) {
+    insert(node: Node<T>, verbose: boolean = false) {
         if (this.root === null) {
             this.root = node;
             return node;
@@ -25,9 +25,12 @@ export class BST<T> {
 
         let currentNode: Node<T> | null = this.root;
         while (currentNode !== null) {
+            verbose && console.log(currentNode.key, node.key)
             if (node.key < currentNode.key) {
+                verbose && console.log('left');
                 currentNode = this.appendOrReturnChild(currentNode, node, 'left');
             } else {
+                verbose && console.log('right');
                 currentNode = this.appendOrReturnChild(currentNode, node, 'right');
             };
         }

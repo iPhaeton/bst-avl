@@ -9,3 +9,11 @@ export const getH = (node: Node<any> | null): number => {
         return Math.max(leftH, rightH);
     }
 };
+
+export const getSpaces = (size: number) => {
+    let str = '';
+    for (let i = 0; i < size; i++) {
+        str += ' ';
+    }
+    return str;
+}
