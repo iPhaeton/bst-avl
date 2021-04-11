@@ -1,6 +1,6 @@
 import { PlotterInterface, Tree } from "src/interfaces";
 import { Node } from "src/Node";
-import { getH, getSpaces } from "./utils";
+import { getSpaces } from "./utils";
 
 export class Plotter<T extends Tree<any>> implements PlotterInterface<T> {
     private plotNodes(nodes: Array<Node<any> | null>, level: number, h: number) {
@@ -23,7 +23,6 @@ export class Plotter<T extends Tree<any>> implements PlotterInterface<T> {
     }
 
     plot(tree: T) {
-        const h = getH(tree.root);
-        tree.root && this.plotNodes([tree.root], 0, h);
+        tree.root && this.plotNodes([tree.root], 0, tree.h);
     }
 }

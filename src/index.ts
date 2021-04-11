@@ -1,6 +1,5 @@
 import { BST } from "./BST";
 import { Node } from "./Node";
-import { getH } from "./utils";
 
 const tree = new BST();
 
