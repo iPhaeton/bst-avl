@@ -6,7 +6,12 @@ export class BST<T> {
     constructor() { };
 
     insert(node: Node<T>) {
-        let currentNode = this.root;
+        if (this.root === null) {
+            this.root = node;
+            return node;
+        }
+
+        let currentNode: Node<T> | null = this.root;
         while (currentNode !== null) {
             if (node.key < currentNode.key) {
                 currentNode = this.appendOrReturnChild(currentNode, node, 'left');
@@ -28,8 +33,22 @@ export class BST<T> {
         }
     };
 
-    // plot(nodes: Node<T>[]) {
-    //     const children = [];
-    //     nodes.forEach(node => console.log(`   ${node.key}   `))
-    // }
+    plot() {
+        this.root && this.plotNodes([this.root]);
+    }
+
+    private plotNodes(nodes: Node<T>[]) {
+        const line1 = nodes.reduce((line, node) => `${line}   ${node.key}   `, '');
+        console.log(line1);
+        const { line: line2, children } = nodes.reduce(({ line, children }, node) => {
+            node.left && children.push(node.left);
+            node.right && children.push(node.right);
+            return { line: `${line}   / \\   `, children };
+        }, { line: '', children: [] } as { line: string, children: Node<T>[] });
+        console.log(line2);
+
+        if (children.length) {
+            this.plotNodes(children);
+        }
+    }
 }
