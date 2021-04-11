@@ -3,6 +3,7 @@ import { Plotter } from './Plotter';
 
 export class BST<T> {
     public root: Node<T> | null = null;
+    public size: number = 0;
 
     constructor(private readonly plotter: Plotter<BST<T>> = new Plotter()) { };
 
@@ -31,6 +32,7 @@ export class BST<T> {
             };
         }
 
+        this.size++;
         return node;
     }
 
