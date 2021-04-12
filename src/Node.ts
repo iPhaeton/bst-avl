@@ -17,6 +17,14 @@ export class Node<T> {
     }
 
     _checkRI(ancestors: Node<T>[], successorrs: Node<T>[]): boolean {
+        if (this.left && this.left.parent !== this) {
+            throw new Error(`Representation invariant failed at node ${this.key}. Left child has a wrong parent.`);
+        }
+
+        if (this.right && this.right.parent !== this) {
+            throw new Error(`Representation invariant failed at node ${this.key}. Right child has a wrong parent.`);
+        }
+
         const ancesorVilotion = ancestors.find(a => a.key > this.key);
         if (ancesorVilotion) {
             throw new Error(`Representation invariant failed at node ${this.key}. An ancestor has key ${ancesorVilotion.key}`);
