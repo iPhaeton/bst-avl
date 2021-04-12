@@ -97,15 +97,7 @@ describe('BST', () => {
             expect(successor).toBe(nodes.find(findByKey(17)));
         });
 
-        it('should return a node\'s successor, when the node doen\'t have the right child', () => {
-            const node = nodes.find(findByKey(15));
-            if (!node) throw new Error('Node not found');
-
-            const successor = tree.successor(node);
-            expect(successor).toBe(nodes.find(findByKey(16)));
-        });
-
-        it('should return a node\'s successor, when the node doen\'t have the right child and is the right child', () => {
+        it('should return a node\'s successor, when the node doesn\'t have the right child', () => {
             const node = nodes.find(findByKey(18));
             if (!node) throw new Error('Node not found');
 
@@ -119,6 +111,38 @@ describe('BST', () => {
 
             const successor = tree.successor(node);
             expect(successor).toBe(null);
+        });
+    });
+
+    describe('predecessor', () => {
+        let tree: BST<number>;
+        let nodes: Node<number>[];
+        beforeAll(() => {
+            [tree, nodes] = createTestTree();
+        });
+
+        it('should return a node\'s predecessor, when the node has the left child', () => {
+            const node = nodes.find(findByKey(16));
+            if (!node) throw new Error('Node not found');
+
+            const predecessor = tree.predecessor(node);
+            expect(predecessor).toBe(nodes.find(findByKey(15)));
+        });
+
+        it('should return a node\'s predecessor, when the node doesn\'t have the left child', () => {
+            const node = nodes.find(findByKey(15));
+            if (!node) throw new Error('Node not found');
+
+            const predecessor = tree.predecessor(node);
+            expect(predecessor).toBe(nodes.find(findByKey(8)));
+        });
+
+        it('should return null, when the node is the minimum node', () => {
+            const node = nodes.find(findByKey(4));
+            if (!node) throw new Error('Node not found');
+
+            const predecessor = tree.predecessor(node);
+            expect(predecessor).toBe(null);
         });
     });
 

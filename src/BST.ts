@@ -24,6 +24,19 @@ export class BST<T> {
         }
     };
 
+    private getNextBySide(node: Node<T>, side: 'left' | 'right') {
+        if (node[side]) {
+            return node[side];
+        } else {
+            let currentParent = node.parent;
+            while (currentParent && node === currentParent[side]) {
+                node = currentParent;
+                currentParent = node.parent;
+            }
+            return currentParent;
+        }
+    }
+
     get h() {
         return this.getH(this.root);
     }
@@ -66,16 +79,11 @@ export class BST<T> {
     }
 
     successor(node: Node<T>) {
-        if (node.right) {
-            return node.right;
-        } else {
-            let currentParent = node.parent;
-            while (currentParent && node === currentParent.right) {
-                node = currentParent;
-                currentParent = node.parent;
-            }
-            return currentParent;
-        }
+        return this.getNextBySide(node, 'right');
+    }
+
+    predecessor(node: Node<T>) {
+        return this.getNextBySide(node, 'left');
     }
 
     _checkRI() {
