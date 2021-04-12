@@ -1,6 +1,8 @@
 import { BST } from "./BST";
 import { Node } from "./Node";
+import { Plotter } from "./Plotter";
 
+const plotter = new Plotter();
 const tree = new BST();
 
 tree.insert(new Node(23, 23));
@@ -12,5 +14,5 @@ tree.insert(new Node(17, 17));
 tree.insert(new Node(18, 18));
 tree.insert(new Node(42, 42));
 tree.insert(new Node(33, 33));
-tree.plot();
+plotter.plot(tree);
 console.log(tree._checkRI(), tree.size);

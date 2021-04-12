@@ -1,11 +1,8 @@
 import { Node } from './Node';
-import { Plotter } from './Plotter';
 
 export class BST<T> {
     public root: Node<T> | null = null;
     public size: number = 0;
-
-    constructor(private readonly plotter: Plotter<BST<T>> = new Plotter()) { };
 
     private appendOrReturnChild(parent: Node<T>, child: Node<T>, side: 'left' | 'right') {
         if (parent[side] === null) {
@@ -52,10 +49,6 @@ export class BST<T> {
         }
 
         return node;
-    }
-
-    plot() {
-        this.plotter.plot(this);
     }
 
     _checkRI() {
