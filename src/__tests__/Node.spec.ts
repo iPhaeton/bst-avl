@@ -1,6 +1,19 @@
 import { Node } from '../Node';
 
 describe('Node', () => {
+    describe('constructor', () => {
+        it('should create a node with a key and value', () => {
+            const value = {};
+            const node = new Node(3, value);
+
+            expect(node.key).toBe(3);
+            expect(node.value).toBe(value);
+            expect(node.parent).toBe(null);
+            expect(node.left).toBe(null);
+            expect(node.right).toBe(null);
+        });
+    });
+        
     describe('_checkRI', () => {
         it('should compare node with its ancestors and predecessors and return true, if comparison is correct', () => {
             const node = new Node(6, 6);

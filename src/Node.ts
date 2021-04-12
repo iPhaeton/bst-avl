@@ -5,7 +5,7 @@ export class Node<T> {
 
     constructor(
         public readonly key: number,
-        private readonly value: T,
+        public readonly value: T,
     ) {
         this.parent = null;
         this.left = null;
