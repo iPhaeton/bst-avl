@@ -16,6 +16,24 @@ const createTestTree = () => {
 };
 
 describe('BST', () => {
+    describe('h', () => {
+        it('should return height of an empty tree', () => {
+            const tree = new BST();
+            expect(tree.h).toBe(0);
+        });
+
+        it('should return height of a tree with only the root note', () => {
+            const tree = new BST();
+            tree.insert(new Node(23, 23));
+            expect(tree.h).toBe(1);
+        });
+
+        it('should return height of a tree', () => {
+            const tree = createTestTree();
+            expect(tree.h).toBe(5);
+        });
+    });
+
     describe('insert', () => {
         it('should insert nodes into the tree while maintaining size and representation invariant', () => {
             const tree = createTestTree();

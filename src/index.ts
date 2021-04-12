@@ -15,4 +15,4 @@ tree.insert(new Node(18, 18));
 tree.insert(new Node(42, 42));
 tree.insert(new Node(33, 33));
 plotter.plot(tree);
-console.log(tree._checkRI(), tree.size);
+console.log(tree._checkRI(), tree.size, tree.h);
