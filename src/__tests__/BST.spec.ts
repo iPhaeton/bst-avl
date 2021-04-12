@@ -1,6 +1,8 @@
 import { BST } from '../BST';
 import { Node } from '../Node';
 
+const findByKey = (key: number) => (node: Node<any>) => node.key === key;
+
 const createTestTree = (): [BST<number>, Node<number>[]] => {
     const nodes = [
         new Node(23, 23),
@@ -63,10 +65,10 @@ describe('BST', () => {
 
         it('should find and return a node by key', () => {
             const node1 = tree.find(17);
-            expect(node1).toBe(nodes.find(n => n.key === 17));
+            expect(node1).toBe(nodes.find(findByKey(17)));
 
             const node2 = tree.find(15);
-            expect(node2).toBe(nodes.find(n => n.key === 15));
+            expect(node2).toBe(nodes.find(findByKey(15)));
         });
 
         it('should find the root node by key', () => {
@@ -77,6 +79,46 @@ describe('BST', () => {
         it('should return null, if node is not found', () => {
             const node = tree.find(99);
             expect(node).toBe(null);
+        });
+    });
+
+    describe('successor', () => {
+        let tree: BST<number>;
+        let nodes: Node<number>[];
+        beforeAll(() => {
+            [tree, nodes] = createTestTree();
+        });
+
+        it('should return a node\'s successor, when the node has the right child', () => {
+            const node = nodes.find(findByKey(16));
+            if (!node) throw new Error('Node not found');
+
+            const successor = tree.successor(node);
+            expect(successor).toBe(nodes.find(findByKey(17)));
+        });
+
+        it('should return a node\'s successor, when the node doen\'t have the right child', () => {
+            const node = nodes.find(findByKey(15));
+            if (!node) throw new Error('Node not found');
+
+            const successor = tree.successor(node);
+            expect(successor).toBe(nodes.find(findByKey(16)));
+        });
+
+        it('should return a node\'s successor, when the node doen\'t have the right child and is the right child', () => {
+            const node = nodes.find(findByKey(18));
+            if (!node) throw new Error('Node not found');
+
+            const successor = tree.successor(node);
+            expect(successor).toBe(nodes.find(findByKey(23)));
+        });
+
+        it('should return null, when the node is the maximum node', () => {
+            const node = nodes.find(findByKey(42));
+            if (!node) throw new Error('Node not found');
+
+            const successor = tree.successor(node);
+            expect(successor).toBe(null);
         });
     });
 

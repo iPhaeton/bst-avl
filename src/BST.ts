@@ -65,6 +65,19 @@ export class BST<T> {
         return currentNode;
     }
 
+    successor(node: Node<T>) {
+        if (node.right) {
+            return node.right;
+        } else {
+            let currentParent = node.parent;
+            while (currentParent && node === currentParent.right) {
+                node = currentParent;
+                currentParent = node.parent;
+            }
+            return currentParent;
+        }
+    }
+
     _checkRI() {
         this.root?._checkRI([], []);
         return true;
