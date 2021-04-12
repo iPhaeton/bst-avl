@@ -58,7 +58,7 @@ export class BST<T> {
     }
 
     _checkRI() {
-        this.root?._checkRI();
+        this.root?._checkRI([], []);
         return true;
     }
 }

@@ -13,3 +13,4 @@ tree.insert(new Node(18, 18));
 tree.insert(new Node(42, 42));
 tree.insert(new Node(33, 33));
 tree.plot();
+console.log(tree._checkRI());

@@ -16,19 +16,34 @@ export class Node<T> {
         return this.value;
     }
 
-    _checkRI() {
-        if (this.left) {
-            if (this.left.key > this.key) throw new Error(`Representation invariant failed at node ${this.key}. Left child has key ${this.left.key}`);
-            if (this.left.parent !== this) throw new Error(`Representation invariant failed at node ${this.key}. Left child has a wrong parent.`)
-            this.left._checkRI();
+    _checkRI(ancestors: Node<T>[], successorrs: Node<T>[]): boolean {
+        const ancesorVilotion = ancestors.find(a => a.key > this.key);
+        if (ancesorVilotion) {
+            throw new Error(`Representation invariant failed at node ${this.key}. An ancestor has key ${ancesorVilotion.key}`);
         }
 
-        if (this.right) {
-            if (this.right.key < this.key) throw new Error(`Representation invariant failed at node ${this.key}. Right child has key ${this.right.key}`)
-            if (this.right.parent !== this) throw new Error(`Representation invariant failed at node ${this.key}. Right child has a wrong parent.`)
-            this.right._checkRI();
+        const successorViolation = successorrs.find(s => s.key < this.key);
+        if (successorViolation) {
+            throw new Error(`Representation invariant failed at node ${this.key}. A successor has key ${successorViolation.key}`);
         }
 
-        return true;
+        return (this.left === null || this.left._checkRI(ancestors, [...successorrs, this])) &&
+            (this.right === null || this.right?._checkRI([...ancestors, this], successorrs));
     }
+
+    // _checkRI() {
+    //     if (this.left) {
+    //         if (this.left.key > this.key) throw new Error(`Representation invariant failed at node ${this.key}. Left child has key ${this.left.key}`);
+    //         if (this.left.parent !== this) throw new Error(`Representation invariant failed at node ${this.key}. Left child has a wrong parent.`)
+    //         this.left._checkRI();
+    //     }
+
+    //     if (this.right) {
+    //         if (this.right.key < this.key) throw new Error(`Representation invariant failed at node ${this.key}. Right child has key ${this.right.key}`)
+    //         if (this.right.parent !== this) throw new Error(`Representation invariant failed at node ${this.key}. Right child has a wrong parent.`)
+    //         this.right._checkRI();
+    //     }
+
+    //     return true;
+    // }
 }
