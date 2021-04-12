@@ -32,6 +32,8 @@ export class BST<T> {
     }
 
     insert(node: Node<T>, verbose: boolean = false) {
+        this.size++;
+
         if (this.root === null) {
             this.root = node;
             return node;
@@ -49,7 +51,6 @@ export class BST<T> {
             };
         }
 
-        this.size++;
         return node;
     }
 
