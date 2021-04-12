@@ -1,18 +1,30 @@
 import { BST } from '../BST';
 import { Node } from '../Node';
 
-const createTestTree = () => {
-    const tree = new BST();
-    tree.insert(new Node(23, 23));
-    tree.insert(new Node(8, 8));
-    tree.insert(new Node(4, 4));
-    tree.insert(new Node(16, 16));
-    tree.insert(new Node(15, 15));
-    tree.insert(new Node(17, 17));
-    tree.insert(new Node(18, 18));
-    tree.insert(new Node(42, 42));
-    tree.insert(new Node(33, 33));
-    return tree;
+const createTestTree = (): [BST<number>, Node<number>[]] => {
+    const nodes = [
+        new Node(23, 23),
+        new Node(8, 8),
+        new Node(4, 4),
+        new Node(16, 16),
+        new Node(15, 15),
+        new Node(17, 17),
+        new Node(18, 18),
+        new Node(42, 42),
+        new Node(33, 33),
+    ]
+
+    const tree = new BST<number>();
+    tree.insert(nodes[0]);
+    tree.insert(nodes[1]);
+    tree.insert(nodes[2]);
+    tree.insert(nodes[3]);
+    tree.insert(nodes[4]);
+    tree.insert(nodes[5]);
+    tree.insert(nodes[6]);
+    tree.insert(nodes[7]);
+    tree.insert(nodes[8]);
+    return [tree, nodes];
 };
 
 describe('BST', () => {
@@ -29,22 +41,48 @@ describe('BST', () => {
         });
 
         it('should return height of a tree', () => {
-            const tree = createTestTree();
+            const [tree] = createTestTree();
             expect(tree.h).toBe(5);
         });
     });
 
     describe('insert', () => {
         it('should insert nodes into the tree while maintaining size and representation invariant', () => {
-            const tree = createTestTree();
+            const [tree] = createTestTree();
             expect(tree.size).toBe(9);
             expect(tree._checkRI()).toBe(true);
         });
     });
 
+    describe('find', () => {
+        let tree: BST<number>;
+        let nodes: Node<number>[];
+        beforeAll(() => {
+            [tree, nodes] = createTestTree();
+        });
+
+        it('should find and return a node by key', () => {
+            const node1 = tree.find(17);
+            expect(node1).toBe(nodes.find(n => n.key === 17));
+
+            const node2 = tree.find(15);
+            expect(node2).toBe(nodes.find(n => n.key === 15));
+        });
+
+        it('should find the root node by key', () => {
+            const node = tree.find(23);
+            expect(node).toBe(tree.root);
+        });
+
+        it('should return null, if node is not found', () => {
+            const node = tree.find(99);
+            expect(node).toBe(null);
+        });
+    });
+
     describe('_checkRI', () => {
         it('should return true, if representation invariant is valid', () => {
-            const tree = createTestTree();
+            const [tree] = createTestTree();
             expect(tree._checkRI()).toBe(true);
         });
 

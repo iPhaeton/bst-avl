@@ -51,6 +51,20 @@ export class BST<T> {
         return node;
     }
 
+    find(key: number) {
+        let currentNode: Node<T> | null = this.root;
+
+        while (currentNode !== null && currentNode.key !== key) {
+            if (key < currentNode.key) {
+                currentNode = currentNode.left;
+            } else {
+                currentNode = currentNode.right;
+            }
+        }
+
+        return currentNode;
+    }
+
     _checkRI() {
         this.root?._checkRI([], []);
         return true;
