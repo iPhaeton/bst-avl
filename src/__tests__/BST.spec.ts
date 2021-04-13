@@ -82,6 +82,34 @@ describe('BST', () => {
         });
     });
 
+    describe('min', () => {
+        let tree: BST<number>;
+        let nodes: Node<number>[];
+        beforeAll(() => {
+            [tree, nodes] = createTestTree();
+        });
+
+        it('should return the minimum node of subtree', () => {
+            const node = tree.min(tree.root);
+            expect(node).toBe(nodes.find(findByKey(4)));
+        });
+
+        it('should return the minimum node of subtree', () => {
+            const node = tree.min(nodes.find(findByKey(16)) || null);
+            expect(node).toBe(nodes.find(findByKey(15)));
+        });
+
+        it('should return the minimum node of a tree of a single node', () => {
+            const node = tree.min(nodes.find(findByKey(18)) || null);
+            expect(node).toBe(nodes.find(findByKey(18)));
+        });
+
+        it('should return null if the tree is empty', () => {
+            const node = tree.min(null);
+            expect(node).toBe(null);
+        });
+    });
+
     describe('successor', () => {
         let tree: BST<number>;
         let nodes: Node<number>[];
@@ -89,13 +117,13 @@ describe('BST', () => {
             [tree, nodes] = createTestTree();
         });
 
-        it('should return a node\'s successor, when the node has the right child', () => {
-            const node = nodes.find(findByKey(16));
-            if (!node) throw new Error('Node not found');
+        // it('should return a node\'s successor, when the node has the right child', () => {
+        //     const node = nodes.find(findByKey(23));
+        //     if (!node) throw new Error('Node not found');
 
-            const successor = tree.successor(node);
-            expect(successor).toBe(nodes.find(findByKey(17)));
-        });
+        //     const successor = tree.successor(node);
+        //     expect(successor).toBe(nodes.find(findByKey(33)));
+        // });
 
         it('should return a node\'s successor, when the node doesn\'t have the right child', () => {
             const node = nodes.find(findByKey(18));

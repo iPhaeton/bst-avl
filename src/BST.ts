@@ -78,6 +78,17 @@ export class BST<T> {
         return currentNode;
     }
 
+    min(node: Node<T> | null) {
+        while (node !== null) {
+            if (node.left === null) {
+                return node;
+            } else {
+                node = node.left;
+            }
+        }
+        return node;
+    }
+
     successor(node: Node<T>) {
         return this.getNextBySide(node, 'right');
     }
