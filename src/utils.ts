@@ -1,4 +1,3 @@
-import { Node } from "./Node";
 import { ChildSide } from "./types";
 
 export const getSpaces = (size: number) => {
