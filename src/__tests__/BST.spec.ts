@@ -1,3 +1,4 @@
+import { Plotter } from '../Plotter';
 import { BST } from '../BST';
 import { Node } from '../Node';
 
@@ -9,11 +10,13 @@ const createTestTree = (): [BST<number>, Node<number>[]] => {
         new Node(8, 8),
         new Node(4, 4),
         new Node(16, 16),
+        new Node(14, 14),
         new Node(15, 15),
-        new Node(17, 17),
         new Node(18, 18),
+        new Node(17, 17),
         new Node(42, 42),
         new Node(33, 33),
+        new Node(44, 44),
     ]
 
     const tree = new BST<number>();
@@ -26,6 +29,8 @@ const createTestTree = (): [BST<number>, Node<number>[]] => {
     tree.insert(nodes[6]);
     tree.insert(nodes[7]);
     tree.insert(nodes[8]);
+    tree.insert(nodes[9]);
+    tree.insert(nodes[10]);
     return [tree, nodes];
 };
 
@@ -51,7 +56,7 @@ describe('BST', () => {
     describe('insert', () => {
         it('should insert nodes into the tree while maintaining size and representation invariant', () => {
             const [tree] = createTestTree();
-            expect(tree.size).toBe(9);
+            expect(tree.size).toBe(11);
             expect(tree._checkRI()).toBe(true);
         });
     });
@@ -95,8 +100,8 @@ describe('BST', () => {
         });
 
         it('should return the minimum node of a tree of a single node', () => {
-            const node = tree.min(nodes.find(findByKey(18)) || null);
-            expect(node).toBe(nodes.find(findByKey(18)));
+            const node = tree.min(nodes.find(findByKey(17)) || null);
+            expect(node).toBe(nodes.find(findByKey(17)));
         });
 
         it('should return null if the tree is empty', () => {
@@ -118,8 +123,8 @@ describe('BST', () => {
         });
 
         it('should return the maximum node of a tree of a single node', () => {
-            const node = tree.min(nodes.find(findByKey(18)) || null);
-            expect(node).toBe(nodes.find(findByKey(18)));
+            const node = tree.min(nodes.find(findByKey(17)) || null);
+            expect(node).toBe(nodes.find(findByKey(17)));
         });
 
         it('should return null if the tree is empty', () => {
@@ -152,7 +157,7 @@ describe('BST', () => {
         });
 
         it('should return null, when the node is the maximum node', () => {
-            const node = nodes.find(findByKey(42));
+            const node = nodes.find(findByKey(44));
             if (!node) throw new Error('Node not found');
 
             const successor = tree.successor(node);
@@ -176,7 +181,7 @@ describe('BST', () => {
         });
 
         it('should return a node\'s predecessor, when the node doesn\'t have the left child', () => {
-            const node = nodes.find(findByKey(15));
+            const node = nodes.find(findByKey(14));
             if (!node) throw new Error('Node not found');
 
             const predecessor = tree.predecessor(node);
@@ -189,6 +194,48 @@ describe('BST', () => {
 
             const predecessor = tree.predecessor(node);
             expect(predecessor).toBe(null);
+        });
+    });
+
+    describe('delete', () => {
+        it('should delete a node without children', () => {
+            const [tree, nodes] = createTestTree();
+            const node = nodes.find(findByKey(18));
+            if (!node) throw new Error('Node not found');
+            tree.delete(node);
+            expect(tree._checkRI()).toBe(true);
+        });
+
+        it('should delete a node without the left child', () => {
+            const [tree, nodes] = createTestTree();
+            const node = nodes.find(findByKey(14));
+            if (!node) throw new Error('Node not found');
+            tree.delete(node);
+            expect(tree._checkRI()).toBe(true);
+        });
+
+        it('should delete a node without the right child', () => {
+            const [tree, nodes] = createTestTree();
+            const node = nodes.find(findByKey(18));
+            if (!node) throw new Error('Node not found');
+            tree.delete(node);
+            expect(tree._checkRI()).toBe(true);
+        });
+
+        it('should delete a node with both children whose successor is its right child', () => {
+            const [tree, nodes] = createTestTree();
+            const node = nodes.find(findByKey(42));
+            if (!node) throw new Error('Node not found');
+            tree.delete(node);
+            expect(tree._checkRI()).toBe(true);
+        });
+
+        it('should delete a node with both children whose successor is not its right child', () => {
+            const [tree, nodes] = createTestTree();
+            const node = nodes.find(findByKey(16));
+            if (!node) throw new Error('Node not found');
+            tree.delete(node);
+            expect(tree._checkRI()).toBe(true);
         });
     });
 
