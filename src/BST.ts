@@ -51,6 +51,35 @@ export class BST<T> {
         }
     }
 
+    private getChildSide(node: Node<T>): ChildSide {
+        if (!node.parent) throw Error(`[BST.getChildSide]. Node ${node.key} has no parent`);
+
+        if (node.parent.left === node) {
+            return 'left';
+        } else {
+            return 'right';
+        }
+    }
+
+    private transplant(node1: Node<T>, node2: Node<T> | null) {
+        if (node1.parent === null) {
+            this.root = node2;
+        } else if (this.getChildSide(node1) === 'left') {
+            node1.parent.left = node2;
+        } else {
+            node1.parent.right = node2;
+        }
+
+        if (node2 !== null) {
+            if (node2 !== node1.left) {
+                node2.left = node1.left;
+            }
+            if (node2 !== node1.right) {
+                node2.right = node1.right;
+            }
+        }
+    }
+
     get h() {
         return this.getH(this.root);
     }
@@ -105,6 +134,17 @@ export class BST<T> {
 
     predecessor(node: Node<T>) {
         return this.getNextBySide(node, 'left');
+    }
+
+    delete(node: Node<T>) {
+        if (!node.left) {
+            this.transplant(node, node.right);
+        } else if (!node.right) {
+            this.transplant(node, node.left);
+        } else {
+            const successor = this.successor(node);
+            this.transplant(node, successor);
+        }
     }
 
     _checkRI() {
