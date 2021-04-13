@@ -71,11 +71,27 @@ export class BST<T> {
         }
 
         if (node2 !== null) {
+            if (node2.parent) {
+                if (this.getChildSide(node2) === 'left') {
+                    node2.parent.left = null;
+                } else {
+                    node2.parent.right = null;
+                }
+            }
+
+            node2.parent = node1.parent;
+
             if (node2 !== node1.left) {
                 node2.left = node1.left;
+                if (node2.left) {
+                    node2.left.parent = node2;
+                }
             }
             if (node2 !== node1.right) {
                 node2.right = node1.right;
+                if (node2.right) {
+                    node2.right.parent = node2;
+                }
             }
         }
     }
