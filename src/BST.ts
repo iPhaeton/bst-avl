@@ -25,6 +25,17 @@ export class BST<T> {
         }
     };
 
+    private getExtremum(node: Node<T> | null, side: 'left' | 'right') {
+        while (node !== null) {
+            if (node[side] === null) {
+                return node;
+            } else {
+                node = node[side];
+            }
+        }
+        return node;
+    }
+
     private getNextBySide(node: Node<T>, side: 'left' | 'right') {
         if (node[side]) {
             return node[side];
@@ -79,14 +90,11 @@ export class BST<T> {
     }
 
     min(node: Node<T> | null) {
-        while (node !== null) {
-            if (node.left === null) {
-                return node;
-            } else {
-                node = node.left;
-            }
-        }
-        return node;
+        return this.getExtremum(node, 'left');
+    }
+
+    max(node: Node<T> | null) {
+        return this.getExtremum(node, 'right');
     }
 
     successor(node: Node<T>) {

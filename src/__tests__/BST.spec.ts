@@ -89,17 +89,35 @@ describe('BST', () => {
             [tree, nodes] = createTestTree();
         });
 
-        it('should return the minimum node of subtree', () => {
+        it('should return the minimum node of a subtree', () => {
             const node = tree.min(tree.root);
             expect(node).toBe(nodes.find(findByKey(4)));
         });
 
-        it('should return the minimum node of subtree', () => {
-            const node = tree.min(nodes.find(findByKey(16)) || null);
-            expect(node).toBe(nodes.find(findByKey(15)));
+        it('should return the minimum node of a tree of a single node', () => {
+            const node = tree.min(nodes.find(findByKey(18)) || null);
+            expect(node).toBe(nodes.find(findByKey(18)));
         });
 
-        it('should return the minimum node of a tree of a single node', () => {
+        it('should return null if the tree is empty', () => {
+            const node = tree.min(null);
+            expect(node).toBe(null);
+        });
+    });
+
+    describe('max', () => {
+        let tree: BST<number>;
+        let nodes: Node<number>[];
+        beforeAll(() => {
+            [tree, nodes] = createTestTree();
+        });
+
+        it('should return the maximum node of a subtree', () => {
+            const node = tree.max(nodes.find(findByKey(8)) || null);
+            expect(node).toBe(nodes.find(findByKey(18)));
+        });
+
+        it('should return the maximum node of a tree of a single node', () => {
             const node = tree.min(nodes.find(findByKey(18)) || null);
             expect(node).toBe(nodes.find(findByKey(18)));
         });
