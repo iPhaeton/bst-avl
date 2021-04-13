@@ -135,13 +135,13 @@ describe('BST', () => {
             [tree, nodes] = createTestTree();
         });
 
-        // it('should return a node\'s successor, when the node has the right child', () => {
-        //     const node = nodes.find(findByKey(23));
-        //     if (!node) throw new Error('Node not found');
+        it('should return a node\'s successor, when the node has the right child', () => {
+            const node = nodes.find(findByKey(23));
+            if (!node) throw new Error('Node not found');
 
-        //     const successor = tree.successor(node);
-        //     expect(successor).toBe(nodes.find(findByKey(33)));
-        // });
+            const successor = tree.successor(node);
+            expect(successor).toBe(nodes.find(findByKey(33)));
+        });
 
         it('should return a node\'s successor, when the node doesn\'t have the right child', () => {
             const node = nodes.find(findByKey(18));
@@ -168,11 +168,11 @@ describe('BST', () => {
         });
 
         it('should return a node\'s predecessor, when the node has the left child', () => {
-            const node = nodes.find(findByKey(16));
+            const node = nodes.find(findByKey(23));
             if (!node) throw new Error('Node not found');
 
             const predecessor = tree.predecessor(node);
-            expect(predecessor).toBe(nodes.find(findByKey(15)));
+            expect(predecessor).toBe(nodes.find(findByKey(18)));
         });
 
         it('should return a node\'s predecessor, when the node doesn\'t have the left child', () => {

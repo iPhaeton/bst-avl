@@ -38,7 +38,7 @@ export class BST<T> {
 
     private getNextBySide(node: Node<T>, side: 'left' | 'right') {
         if (node[side]) {
-            return node[side];
+            return this.getExtremum(node[side], side === 'left' ? 'right' : 'left');
         } else {
             let currentParent = node.parent;
             while (currentParent && node === currentParent[side]) {
