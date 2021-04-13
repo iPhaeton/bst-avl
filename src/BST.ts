@@ -1,4 +1,4 @@
-import { IncrementSize } from './decorators/IncrementSize';
+import { IncrementSize, DecrementSize } from './decorators/size';
 import { Node } from './Node';
 import { ChildSide } from './types';
 import { getOppositeSide } from './utils';
@@ -100,7 +100,7 @@ export class BST<T> {
         return this.getH(this.root);
     }
 
-    @IncrementSize()
+    @IncrementSize
     insert(node: Node<T>, verbose: boolean = false) {
         if (this.root === null) {
             this.root = node;
@@ -152,6 +152,7 @@ export class BST<T> {
         return this.getNextBySide(node, 'left');
     }
 
+    @DecrementSize
     delete(node: Node<T>) {
         if (!node.left) {
             this.transplant(node, node.right);

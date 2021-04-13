@@ -1,4 +1,3 @@
-import { Plotter } from '../Plotter';
 import { BST } from '../BST';
 import { Node } from '../Node';
 
@@ -200,42 +199,52 @@ describe('BST', () => {
     describe('delete', () => {
         it('should delete a node without children', () => {
             const [tree, nodes] = createTestTree();
+            const initialSize = tree.size;
             const node = nodes.find(findByKey(18));
             if (!node) throw new Error('Node not found');
             tree.delete(node);
             expect(tree._checkRI()).toBe(true);
+            expect(tree.size).toBe(initialSize - 1);
         });
 
         it('should delete a node without the left child', () => {
             const [tree, nodes] = createTestTree();
+            const initialSize = tree.size;
             const node = nodes.find(findByKey(14));
             if (!node) throw new Error('Node not found');
             tree.delete(node);
             expect(tree._checkRI()).toBe(true);
+            expect(tree.size).toBe(initialSize - 1);
         });
 
         it('should delete a node without the right child', () => {
             const [tree, nodes] = createTestTree();
+            const initialSize = tree.size;
             const node = nodes.find(findByKey(18));
             if (!node) throw new Error('Node not found');
             tree.delete(node);
             expect(tree._checkRI()).toBe(true);
+            expect(tree.size).toBe(initialSize - 1);
         });
 
         it('should delete a node with both children whose successor is its right child', () => {
             const [tree, nodes] = createTestTree();
+            const initialSize = tree.size;
             const node = nodes.find(findByKey(42));
             if (!node) throw new Error('Node not found');
             tree.delete(node);
             expect(tree._checkRI()).toBe(true);
+            expect(tree.size).toBe(initialSize - 1);
         });
 
         it('should delete a node with both children whose successor is not its right child', () => {
             const [tree, nodes] = createTestTree();
+            const initialSize = tree.size;
             const node = nodes.find(findByKey(16));
             if (!node) throw new Error('Node not found');
             tree.delete(node);
             expect(tree._checkRI()).toBe(true);
+            expect(tree.size).toBe(initialSize - 1);
         });
     });
 
