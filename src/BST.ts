@@ -1,3 +1,4 @@
+import { IncrementSize } from './decorators/IncrementSize';
 import { Node } from './Node';
 
 export class BST<T> {
@@ -41,9 +42,8 @@ export class BST<T> {
         return this.getH(this.root);
     }
 
+    @IncrementSize()
     insert(node: Node<T>, verbose: boolean = false) {
-        this.size++;
-
         if (this.root === null) {
             this.root = node;
             return node;
