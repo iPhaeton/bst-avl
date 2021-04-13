@@ -1,11 +1,13 @@
 import { IncrementSize } from './decorators/IncrementSize';
 import { Node } from './Node';
+import { ChildSide } from './types';
+import { getOppositeSide } from './utils';
 
 export class BST<T> {
     public root: Node<T> | null = null;
     public size: number = 0;
 
-    private appendOrReturnChild(parent: Node<T>, child: Node<T>, side: 'left' | 'right') {
+    private appendOrReturnChild(parent: Node<T>, child: Node<T>, side: ChildSide) {
         if (parent[side] === null) {
             parent[side] = child;
             child.parent = parent;
@@ -25,7 +27,7 @@ export class BST<T> {
         }
     };
 
-    private getExtremum(node: Node<T> | null, side: 'left' | 'right') {
+    private getExtremum(node: Node<T> | null, side: ChildSide) {
         while (node !== null) {
             if (node[side] === null) {
                 return node;
@@ -36,9 +38,9 @@ export class BST<T> {
         return node;
     }
 
-    private getNextBySide(node: Node<T>, side: 'left' | 'right') {
+    private getNextBySide(node: Node<T>, side: ChildSide) {
         if (node[side]) {
-            return this.getExtremum(node[side], side === 'left' ? 'right' : 'left');
+            return this.getExtremum(node[side], getOppositeSide(side));
         } else {
             let currentParent = node.parent;
             while (currentParent && node === currentParent[side]) {

@@ -1,4 +1,4 @@
-import { Tree } from "src/interfaces";
+import { Tree } from "src/types";
 
 export function IncrementSize() {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {

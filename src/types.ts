@@ -9,3 +9,5 @@ export interface Tree<T> {
 export interface PlotterInterface<Tree> {
     plot: (tree: Tree) => void;
 };
+
+export type ChildSide = 'left' | 'right';

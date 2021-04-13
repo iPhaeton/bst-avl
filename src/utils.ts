@@ -1,4 +1,5 @@
 import { Node } from "./Node";
+import { ChildSide } from "./types";
 
 export const getSpaces = (size: number) => {
     let str = '';
@@ -7,3 +8,5 @@ export const getSpaces = (size: number) => {
     }
     return str;
 }
+
+export const getOppositeSide = (side: ChildSide) => side === 'left' ? 'right' : 'left';

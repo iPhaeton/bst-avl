@@ -1,4 +1,4 @@
-import { PlotterInterface, Tree } from "src/interfaces";
+import { PlotterInterface, Tree } from "src/types";
 import { Node } from "src/Node";
 import { getSpaces } from "./utils";
 
