@@ -1,5 +1,5 @@
 import { PlotterInterface, Tree } from "src/types";
-import { Node } from "src/Node";
+import { Node } from "src/nodes/Node";
 import { getSpaces } from "./utils";
 
 export class Plotter<T extends Tree<any>> implements PlotterInterface<T> {

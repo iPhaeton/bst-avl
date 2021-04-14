@@ -1,7 +1,7 @@
-import { IncrementSize, DecrementSize } from './decorators/size';
-import { Node } from './Node';
-import { ChildSide } from './types';
-import { getOppositeSide } from './utils';
+import { IncrementSize, DecrementSize } from 'src/decorators/size';
+import { Node } from 'src/nodes/Node';
+import { ChildSide } from 'src/types';
+import { getOppositeSide } from 'src/utils';
 
 export class BST<T> {
     public root: Node<T> | null = null;

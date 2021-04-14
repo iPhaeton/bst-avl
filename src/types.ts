@@ -1,4 +1,5 @@
-import { Node } from "./Node";
+import { Node } from "./nodes/Node";
+import { NodeWithStats } from "./NodeWithStats";
 
 export interface Tree<T> {
     root: Node<T> | null;
@@ -11,3 +12,8 @@ export interface PlotterInterface<Tree> {
 };
 
 export type ChildSide = 'left' | 'right';
+
+export interface StatsManager<T, Stats> {
+    getDefaultStats: () => Stats;
+    manageStats: (node: NodeWithStats<T, Stats>) => Stats;
+}

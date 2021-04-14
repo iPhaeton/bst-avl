@@ -1,5 +1,5 @@
-import { BST } from 'src/BST';
-import { Node } from 'src/Node';
+import { BST } from 'src/trees/BST';
+import { Node } from 'src/nodes/Node';
 
 const findByKey = (key: number) => (node: Node<any>) => node.key === key;
 

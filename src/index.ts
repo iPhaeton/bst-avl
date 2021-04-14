@@ -1,5 +1,5 @@
-import { BST } from "./BST";
-import { Node } from "./Node";
+import { BST } from "./trees/BST";
+import { Node } from "./nodes/Node";
 import { Plotter } from "./Plotter";
 
 const plotter = new Plotter();
