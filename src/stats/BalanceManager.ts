@@ -1,4 +1,3 @@
-import { AVL } from "src/trees/AVL";
 import { HeightStats, StatsManager, Tree } from "src/types";
 import { NodeWithStats } from "../nodes/NodeWithStats";
 
