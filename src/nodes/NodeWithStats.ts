@@ -1,7 +1,7 @@
 import { Node } from "./Node";
-import { StatsManager } from "src/types";
+import { INodeWithStats, StatsManager, Tree } from "src/types";
 
-export class NodeWithStats<T, Stats> extends Node<T> {
+export class NodeWithStats<T, Stats> extends Node<T> implements INodeWithStats<T, Stats> {
     public parent: NodeWithStats<T, Stats> | null;
     public left: NodeWithStats<T, Stats> | null;
     public right: NodeWithStats<T, Stats> | null;
@@ -16,7 +16,8 @@ export class NodeWithStats<T, Stats> extends Node<T> {
         this.right = null;
     }
 
-    manageStats() {
-        this.stats = this.statsManager.manageStats(this);
+    manageStats(tree?: Tree<T>) {
+        this.stats = this.statsManager.manageStats(this, tree);
+        return this.stats;
     }
 }

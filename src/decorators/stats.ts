@@ -1,4 +1,5 @@
 import { NodeWithStats } from 'src/nodes/NodeWithStats';
+import { Tree } from 'src/types';
 
 export function ManageStats<T, Stats>() {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
@@ -8,7 +9,7 @@ export function ManageStats<T, Stats>() {
             const result = method.apply(this, node);
 
             while (node) {
-                node.manageStats();
+                node.manageStats(this as Tree<T>);
                 node = node.parent;
             }
 
