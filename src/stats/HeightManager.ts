@@ -15,7 +15,7 @@ export class HeightManager<T> implements StatsManager<T, HeightStats> {
             h: Math.max(
                 this.getNodeHeight(node.left),
                 this.getNodeHeight(node.right),
-            )
+            ) + 1
         };
     }
 }
