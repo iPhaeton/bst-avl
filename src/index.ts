@@ -45,5 +45,5 @@ tree.insert(nodes[12]);
 plotter.plot(tree);
 
 console.log('-----------------------------------------------------------------------------------------')
-balanceManager['rotateRight'](nodes[0], tree);
+balanceManager['rotateLeft'](nodes[0], tree);
 plotter.plot(tree);

@@ -1,10 +1,12 @@
-import { HeightStats, StatsManager, Tree } from "src/types";
+import { ChildSide, HeightStats, StatsManager, Tree } from "src/types";
+import { getOppositeSide } from "src/utils";
 import { NodeWithStats } from "../nodes/NodeWithStats";
 
 export class BalanceManager<T> implements StatsManager<T, {}> {
-    private rotateRight(node: NodeWithStats<T, HeightStats>, tree: Tree<T>) {
-        if (node.left === null) return;
-        const A = node.left;
+    private rotate(node: NodeWithStats<T, HeightStats>, tree: Tree<T>, side: ChildSide) {
+        const oppositeSide = getOppositeSide(side);
+        const A = node[oppositeSide];
+        if (A === null) return;
 
         if (node.parent !== null) {
             if (node === node.parent.left) {
@@ -17,13 +19,22 @@ export class BalanceManager<T> implements StatsManager<T, {}> {
         }
         A.parent = node.parent;
         node.parent = A;
-        node.left = A.right;
-        A.right = node;
+        node[oppositeSide] = A[side];
+        A[side] = node;
 
-        if (node.left !== null) {
-            node.left.parent = node;
+        const child = node[oppositeSide]
+        if (child !== null) {
+            child.parent = node;
         }
     };
+
+    private rotateRight(node: NodeWithStats<T, HeightStats>, tree: Tree<T>) {
+        return this.rotate(node, tree, 'right');
+    }
+
+    private rotateLeft(node: NodeWithStats<T, HeightStats>, tree: Tree<T>) {
+        return this.rotate(node, tree, 'left');
+    }
 
     getDefaultStats() {
         return {};
