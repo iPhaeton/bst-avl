@@ -118,7 +118,6 @@ export class BST<T> {
                 currentNode = this.appendOrReturnChild(currentNode, node, 'right');
             };
         }
-
         return node;
     }
 

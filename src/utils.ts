@@ -1,4 +1,5 @@
-import { ChildSide } from "./types";
+import { NodeWithStats } from "./nodes/NodeWithStats";
+import { ChildSide, HeightStats } from "./types";
 
 export const getSpaces = (size: number) => {
     let str = '';

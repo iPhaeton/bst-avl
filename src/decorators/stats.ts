@@ -6,7 +6,7 @@ export function ManageStats<T, Stats>() {
         const method = target[propertyKey];
 
         descriptor.value = function (node: NodeWithStats<T, Stats> | null) {
-            const result = method.apply(this, node);
+            const result = method.apply(this, [node]);
 
             while (node) {
                 node.manageStats(this as Tree<T>);

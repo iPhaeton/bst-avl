@@ -6,6 +6,7 @@ import { BST } from './BST';
 export class AVL<T> extends BST<T> {
     @ManageStats<T, HeightStats>()
     insert(node: NodeWithStats<T, HeightStats>) {
-        return super.insert(node);
+        const res = super.insert(node);
+        return res;
     }
 }

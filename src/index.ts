@@ -1,25 +1,37 @@
 import { BST } from "./trees/BST";
 import { Node } from "./nodes/Node";
 import { Plotter } from "./Plotter";
+import { AVL } from "./trees/AVL";
+import { HeightManager } from "./stats/HeightManager";
+import { NodeWithStats } from "./nodes/NodeWithStats";
+import { HeightStats } from "./types";
+import { BalanceManager } from "./stats/BalanceManager";
 
 const plotter = new Plotter();
-const tree = new BST();
+const tree = new AVL<number>();
+const heightManager = new HeightManager<number>();
+const balanceManager = new BalanceManager<number>();
 
-tree.insert(new Node(23, 23));
-tree.insert(new Node(8, 8));
-tree.insert(new Node(4, 4));
-tree.insert(new Node(16, 16));
-tree.insert(new Node(14, 14));
-tree.insert(new Node(15, 15));
-tree.insert(new Node(18, 18));
-tree.insert(new Node(17, 17));
-tree.insert(new Node(42, 42));
-tree.insert(new Node(33, 33));
-tree.insert(new Node(44, 44));
+const nodes = [
+    new NodeWithStats<number, HeightStats>(15, 15, heightManager),
+    new NodeWithStats<number, HeightStats>(10, 10, heightManager),
+    new NodeWithStats<number, HeightStats>(20, 20, heightManager),
+    new NodeWithStats<number, HeightStats>(12, 12, heightManager),
+    new NodeWithStats<number, HeightStats>(8, 8, heightManager),
+    new NodeWithStats<number, HeightStats>(7, 7, heightManager),
+    new NodeWithStats<number, HeightStats>(9, 9, heightManager),
+];
+
+tree.insert(nodes[0]);
+tree.insert(nodes[1]);
+tree.insert(nodes[2]);
+tree.insert(nodes[3]);
+tree.insert(nodes[4]);
+tree.insert(nodes[5]);
+tree.insert(nodes[6]);
+
 plotter.plot(tree);
 
-console.log('--------------------------------------------------------------------------------------------------------------------------------')
-const node = tree.find(16);
-tree.delete(node as Node<number>);
-console.log(tree._checkRI());
+console.log('-----------------------------------------------------------------------------------------')
+balanceManager['rotateRight'](tree.root as NodeWithStats<number, HeightStats>, tree);
 plotter.plot(tree);
