@@ -1,5 +1,5 @@
 import { ManagedNode } from 'src/nodes/ManagedNode';
-import { HeightManager } from 'src/stats/HeightManager';
+import { HeightManager } from 'src/managers/HeightManager';
 import { HeightStats } from 'src/types';
 
 describe('HeightManager', () => {

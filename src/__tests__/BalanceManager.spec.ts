@@ -1,7 +1,7 @@
 import { ManagedNode } from "src/nodes/ManagedNode";
 import { Plotter } from "src/Plotter";
-import { BalanceManager } from "src/stats/BalanceManager";
-import { HeightManager } from "src/stats/HeightManager";
+import { BalanceManager } from "src/managers/BalanceManager";
+import { HeightManager } from "src/managers/HeightManager";
 import { AVL } from "src/trees/AVL";
 import { HeightStats } from "src/types";
 
