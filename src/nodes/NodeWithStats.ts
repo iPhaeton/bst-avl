@@ -7,7 +7,7 @@ export class NodeWithStats<T, Stats> extends Node<T> implements INodeWithStats<T
     public right: NodeWithStats<T, Stats> | null;
     public stats: Stats;
 
-    constructor(key: number, value: T, private readonly statsManager: StatsManager<T, Stats>) {
+    constructor(key: number, value: T, private readonly statsManager: StatsManager<T, any, Stats>) {
         super(key, value);
         this.stats = this.statsManager.getDefaultStats();
 

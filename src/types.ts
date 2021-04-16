@@ -13,9 +13,9 @@ export interface PlotterInterface<Tree> {
 
 export type ChildSide = 'left' | 'right';
 
-export interface StatsManager<T, Stats> {
+export interface StatsManager<T, Node, Stats> {
     getDefaultStats: () => Stats;
-    manageStats: (node: NodeWithStats<T, Stats>, tree?: Tree<T>) => Stats;
+    manageStats: (node: Node, tree?: Tree<T>) => Stats;
 }
 
 export interface HeightStats {
