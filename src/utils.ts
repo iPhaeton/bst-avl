@@ -10,3 +10,7 @@ export const getSpaces = (size: number) => {
 }
 
 export const getOppositeSide = (side: ChildSide) => side === 'left' ? 'right' : 'left';
+
+export const getNodeHeight = <T>(node: NodeWithStats<T, HeightStats> | null) => {
+    return node?.stats.h || 0;
+}
