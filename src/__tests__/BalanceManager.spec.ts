@@ -1,9 +1,9 @@
 import { ManagedNode } from "src/nodes/ManagedNode";
-import { Plotter } from "src/Plotter";
 import { BalanceManager } from "src/managers/BalanceManager";
 import { HeightManager } from "src/managers/HeightManager";
 import { AVL } from "src/trees/AVL";
 import { HeightStats } from "src/types";
+import { AVLNode } from "src/nodes/AVLNode";
 
 const createTestTree = (): [AVL<number>, ManagedNode<number, HeightStats>[]] => {
     const tree = new AVL<number>();
@@ -23,7 +23,7 @@ const createTestTree = (): [AVL<number>, ManagedNode<number, HeightStats>[]] => 
         new ManagedNode<number, HeightStats>(16, 16, heightManager),
         new ManagedNode<number, HeightStats>(21, 21, heightManager),
         new ManagedNode<number, HeightStats>(23, 23, heightManager),
-    ];
+    ] as AVLNode<number>[];
 
     tree.insert(nodes[0]);
     tree.insert(nodes[1]);
@@ -159,7 +159,7 @@ describe('BalanceManger', () => {
                 new ManagedNode<number, HeightStats>(20, 20, heightManager),
                 new ManagedNode<number, HeightStats>(5, 5, heightManager),
                 new ManagedNode<number, HeightStats>(1, 1, heightManager),
-            ];
+            ] as AVLNode<number>[];
 
             const tree = new AVL<number>();
 
@@ -182,7 +182,7 @@ describe('BalanceManger', () => {
                 new ManagedNode<number, HeightStats>(20, 20, heightManager),
                 new ManagedNode<number, HeightStats>(5, 5, heightManager),
                 new ManagedNode<number, HeightStats>(7, 7, heightManager),
-            ];
+            ] as AVLNode<number>[];
 
             const tree = new AVL<number>();
 
@@ -206,7 +206,7 @@ describe('BalanceManger', () => {
                 new ManagedNode<number, HeightStats>(20, 20, heightManager),
                 new ManagedNode<number, HeightStats>(25, 25, heightManager),
                 new ManagedNode<number, HeightStats>(30, 30, heightManager),
-            ];
+            ] as AVLNode<number>[];
 
             const tree = new AVL<number>();
 
@@ -229,7 +229,7 @@ describe('BalanceManger', () => {
                 new ManagedNode<number, HeightStats>(20, 20, heightManager),
                 new ManagedNode<number, HeightStats>(25, 25, heightManager),
                 new ManagedNode<number, HeightStats>(21, 21, heightManager),
-            ];
+            ] as AVLNode<number>[];
 
             const tree = new AVL<number>();
 

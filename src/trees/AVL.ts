@@ -8,7 +8,7 @@ export class AVL<T> extends BST<T> {
     public root: AVLNode<T> | null = null;
 
     @ManageStats<T, HeightStats>()
-    insert(node: ManagedNode<T, HeightStats>) {
+    insert(node: AVLNode<T>) {
         const res = super.insert(node);
         return res;
     }
