@@ -5,6 +5,7 @@ import { ManagedNode } from "./nodes/ManagedNode";
 import { HeightStats } from "./types";
 import { BalanceManager } from "./managers/BalanceManager";
 import { Composition } from "./managers/Composition";
+import { AVLNode } from "./nodes/AVLNode";
 
 const plotter = new Plotter();
 const tree = new AVL<number>();
@@ -14,12 +15,12 @@ const balanceManager = new BalanceManager<number>();
 const manager = new Composition(heightManager, balanceManager, heightManager);
 
 const nodes = [
-    new ManagedNode<number, HeightStats>(1, 1, manager),
-    new ManagedNode<number, HeightStats>(10, 10, manager),
-    new ManagedNode<number, HeightStats>(20, 20, manager),
-    new ManagedNode<number, HeightStats>(25, 25, manager),
-    new ManagedNode<number, HeightStats>(30, 30, manager),
-    new ManagedNode<number, HeightStats>(35, 35, manager),
+    new AVLNode(1, 1),
+    new AVLNode(10, 10),
+    new AVLNode(20, 20),
+    new AVLNode(25, 25),
+    new AVLNode(30, 30),
+    new AVLNode(35, 35),
 ];
 
 tree.insert(nodes[0]);
@@ -36,4 +37,4 @@ console.log(nodes[2].key, nodes[2].stats);
 console.log(nodes[3].key, nodes[3].stats);
 console.log(nodes[4].key, nodes[4].stats);
 console.log(nodes[5].key, nodes[5].stats);
-console.log(tree._checkRI());
+console.log(tree._checkAVLRI());

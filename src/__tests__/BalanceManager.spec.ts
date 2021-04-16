@@ -61,7 +61,7 @@ describe('BalanceManger', () => {
             expect(nodes[3].parent).toBe(nodes[1]);
             expect(nodes[5].left).toBe(nodes[6]);
             expect(nodes[6].parent).toBe(nodes[5]);
-            expect((tree as any).__proto__._checkRI()).toBe(true);
+            expect(tree._checkRI()).toBe(true);
         });
 
         it('should rotate the root node', () => {
@@ -77,7 +77,7 @@ describe('BalanceManger', () => {
             expect(nodes[2].parent).toBe(nodes[0]);
             expect(nodes[1].left).toBe(nodes[5]);
             expect(nodes[5].parent).toBe(nodes[1]);
-            expect((tree as any).__proto__._checkRI()).toBe(true);
+            expect(tree._checkRI()).toBe(true);
         });
 
         it('should not rotate a node without the left child', () => {
@@ -89,7 +89,7 @@ describe('BalanceManger', () => {
             expect(nodes[3].parent).toBe(parent);
             expect(nodes[3].left).toBe(left);
             expect(nodes[3].right).toBe(right);
-            expect((tree as any).__proto__._checkRI()).toBe(true);
+            expect(tree._checkRI()).toBe(true);
         });
     });
 
@@ -105,7 +105,7 @@ describe('BalanceManger', () => {
             expect(nodes[8].parent).toBe(nodes[2]);
             expect(nodes[9].right).toBe(nodes[12]);
             expect(nodes[12].parent).toBe(nodes[9]);
-            expect((tree as any).__proto__._checkRI()).toBe(true);
+            expect(tree._checkRI()).toBe(true);
         });
 
         it('should rotate the root node', () => {
@@ -121,7 +121,7 @@ describe('BalanceManger', () => {
             expect(nodes[1].parent).toBe(nodes[0]);
             expect(nodes[2].right).toBe(nodes[9]);
             expect(nodes[9].parent).toBe(nodes[2]);
-            expect((tree as any).__proto__._checkRI()).toBe(true);
+            expect(tree._checkRI()).toBe(true);
         });
 
         it('should not rotate a node without the right child', () => {
@@ -133,7 +133,7 @@ describe('BalanceManger', () => {
             expect(nodes[8].parent).toBe(parent);
             expect(nodes[8].left).toBe(left);
             expect(nodes[8].right).toBe(right);
-            expect((tree as any).__proto__._checkRI()).toBe(true);
+            expect(tree._checkRI()).toBe(true);
         });
     });
 
