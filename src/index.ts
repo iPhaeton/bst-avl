@@ -14,8 +14,8 @@ const nodes = [
     new ManagedNode<number, HeightStats>(15, 15, heightManager),
     new ManagedNode<number, HeightStats>(10, 10, heightManager),
     new ManagedNode<number, HeightStats>(20, 20, heightManager),
-    new ManagedNode<number, HeightStats>(5, 5, heightManager),
-    new ManagedNode<number, HeightStats>(7, 7, heightManager),
+    new ManagedNode<number, HeightStats>(25, 25, heightManager),
+    new ManagedNode<number, HeightStats>(21, 21, heightManager),
 ];
 
 tree.insert(nodes[0]);
@@ -27,5 +27,5 @@ tree.insert(nodes[4]);
 plotter.plot(tree);
 
 console.log('-----------------------------------------------------------------------------------------')
-balanceManager.manage(nodes[1], tree);
+balanceManager.manage(nodes[2], tree);
 plotter.plot(tree);

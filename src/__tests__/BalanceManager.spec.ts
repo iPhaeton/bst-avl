@@ -1,4 +1,5 @@
 import { ManagedNode } from "src/nodes/ManagedNode";
+import { Plotter } from "src/Plotter";
 import { BalanceManager } from "src/stats/BalanceManager";
 import { HeightManager } from "src/stats/HeightManager";
 import { AVL } from "src/trees/AVL";
@@ -133,6 +134,116 @@ describe('BalanceManger', () => {
             expect(nodes[8].left).toBe(left);
             expect(nodes[8].right).toBe(right);
             expect((tree as any).__proto__._checkRI()).toBe(true);
+        });
+    });
+
+    describe('manage', () => {
+        let balanceManager: BalanceManager<number>;
+        let heightManager: HeightManager<number>;
+        beforeAll(() => {
+            heightManager = new HeightManager<number>();
+            balanceManager = new BalanceManager<number>();
+
+            balanceManager['rotateLeft'] = jest.fn();
+            balanceManager['rotateRight'] = jest.fn();
+        });
+
+        beforeEach(() => {
+            jest.clearAllMocks();
+        });
+
+        it('should call "rotateRight", if left node is heavier and heavy nodes are in a straight line', () => {
+            const nodes = [
+                new ManagedNode<number, HeightStats>(15, 15, heightManager),
+                new ManagedNode<number, HeightStats>(10, 10, heightManager),
+                new ManagedNode<number, HeightStats>(20, 20, heightManager),
+                new ManagedNode<number, HeightStats>(5, 5, heightManager),
+                new ManagedNode<number, HeightStats>(1, 1, heightManager),
+            ];
+
+            const tree = new AVL<number>();
+
+            tree.insert(nodes[0]);
+            tree.insert(nodes[1]);
+            tree.insert(nodes[2]);
+            tree.insert(nodes[3]);
+            tree.insert(nodes[4]);
+
+            balanceManager.manage(nodes[1], tree);
+            expect(balanceManager['rotateRight']).toHaveBeenCalledTimes(1);
+            expect(balanceManager['rotateLeft']).toHaveBeenCalledTimes(0);
+            expect(balanceManager['rotateRight']).toBeCalledWith(nodes[1], tree);
+        });
+
+        it('should call "rotateRight", if left node is heavier and heavy nodes are in a zig-zag', () => {
+            const nodes = [
+                new ManagedNode<number, HeightStats>(15, 15, heightManager),
+                new ManagedNode<number, HeightStats>(10, 10, heightManager),
+                new ManagedNode<number, HeightStats>(20, 20, heightManager),
+                new ManagedNode<number, HeightStats>(5, 5, heightManager),
+                new ManagedNode<number, HeightStats>(7, 7, heightManager),
+            ];
+
+            const tree = new AVL<number>();
+
+            tree.insert(nodes[0]);
+            tree.insert(nodes[1]);
+            tree.insert(nodes[2]);
+            tree.insert(nodes[3]);
+            tree.insert(nodes[4]);
+
+            balanceManager.manage(nodes[1], tree);
+            expect(balanceManager['rotateRight']).toHaveBeenCalledTimes(1);
+            expect(balanceManager['rotateLeft']).toHaveBeenCalledTimes(1);
+            expect(balanceManager['rotateRight']).toBeCalledWith(nodes[1], tree);
+            expect(balanceManager['rotateLeft']).toBeCalledWith(nodes[1].left, tree);
+        });
+
+        it('should call "rotateRight" and "rotateLeft", if right node is heavier and heavy nodes are in a straight line', () => {
+            const nodes = [
+                new ManagedNode<number, HeightStats>(15, 15, heightManager),
+                new ManagedNode<number, HeightStats>(10, 10, heightManager),
+                new ManagedNode<number, HeightStats>(20, 20, heightManager),
+                new ManagedNode<number, HeightStats>(25, 25, heightManager),
+                new ManagedNode<number, HeightStats>(30, 30, heightManager),
+            ];
+
+            const tree = new AVL<number>();
+
+            tree.insert(nodes[0]);
+            tree.insert(nodes[1]);
+            tree.insert(nodes[2]);
+            tree.insert(nodes[3]);
+            tree.insert(nodes[4]);
+
+            balanceManager.manage(nodes[2], tree);
+            expect(balanceManager['rotateLeft']).toHaveBeenCalledTimes(1);
+            expect(balanceManager['rotateRight']).toHaveBeenCalledTimes(0);
+            expect(balanceManager['rotateLeft']).toBeCalledWith(nodes[2], tree);
+        });
+
+        it('should call "rotateLeft" and "rotateRight", if right node is heavier and heavy nodes are in a zig-zag', () => {
+            const nodes = [
+                new ManagedNode<number, HeightStats>(15, 15, heightManager),
+                new ManagedNode<number, HeightStats>(10, 10, heightManager),
+                new ManagedNode<number, HeightStats>(20, 20, heightManager),
+                new ManagedNode<number, HeightStats>(25, 25, heightManager),
+                new ManagedNode<number, HeightStats>(21, 21, heightManager),
+            ];
+
+            const tree = new AVL<number>();
+
+            tree.insert(nodes[0]);
+            tree.insert(nodes[1]);
+            tree.insert(nodes[2]);
+            tree.insert(nodes[3]);
+            tree.insert(nodes[4]);
+
+            balanceManager.manage(nodes[2], tree);
+            expect(balanceManager['rotateLeft']).toHaveBeenCalledTimes(1);
+            expect(balanceManager['rotateRight']).toHaveBeenCalledTimes(1);
+            expect(balanceManager['rotateLeft']).toBeCalledWith(nodes[2], tree);
+            expect(balanceManager['rotateRight']).toBeCalledWith(nodes[2].right, tree);
         });
     });
 });
