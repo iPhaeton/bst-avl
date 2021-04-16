@@ -65,7 +65,6 @@ describe('BalanceManger', () => {
 
         it('should rotate the root node', () => {
             const [tree, nodes] = createTestTree();
-            const parent = nodes[0].parent
             manager['rotateRight'](nodes[0], tree);
             expect(tree.root).toBe(nodes[1]);
             expect(nodes[1].parent).toBe(null);
@@ -89,6 +88,50 @@ describe('BalanceManger', () => {
             expect(nodes[3].parent).toBe(parent);
             expect(nodes[3].left).toBe(left);
             expect(nodes[3].right).toBe(right);
+            expect((tree as any).__proto__._checkRI()).toBe(true);
+        });
+    });
+
+    describe('rotateLeft', () => {
+        it('should rotate left', () => {
+            const [tree, nodes] = createTestTree();
+            manager['rotateLeft'](nodes[2], tree);
+            expect(nodes[9].left).toBe(nodes[2]);
+            expect(nodes[2].parent).toBe(nodes[9]);
+            expect(nodes[2].right).toBe(nodes[11]);
+            expect(nodes[11].parent).toBe(nodes[2]);
+            expect(nodes[2].left).toBe(nodes[8]);
+            expect(nodes[8].parent).toBe(nodes[2]);
+            expect(nodes[9].right).toBe(nodes[12]);
+            expect(nodes[12].parent).toBe(nodes[9]);
+            expect((tree as any).__proto__._checkRI()).toBe(true);
+        });
+
+        it('should rotate the root node', () => {
+            const [tree, nodes] = createTestTree();
+            manager['rotateLeft'](nodes[0], tree);
+            expect(tree.root).toBe(nodes[2]);
+            expect(nodes[2].parent).toBe(null);
+            expect(nodes[2].left).toBe(nodes[0]);
+            expect(nodes[0].parent).toBe(nodes[2]);
+            expect(nodes[0].right).toBe(nodes[8]);
+            expect(nodes[8].parent).toBe(nodes[0]);
+            expect(nodes[0].left).toBe(nodes[1]);
+            expect(nodes[1].parent).toBe(nodes[0]);
+            expect(nodes[2].right).toBe(nodes[9]);
+            expect(nodes[9].parent).toBe(nodes[2]);
+            expect((tree as any).__proto__._checkRI()).toBe(true);
+        });
+
+        it('should not rotate a node without the right child', () => {
+            const [tree, nodes] = createTestTree();
+            const parent = nodes[8].parent;
+            const left = nodes[8].left;
+            const right = nodes[8].right;
+            manager['rotateLeft'](nodes[8], tree);
+            expect(nodes[8].parent).toBe(parent);
+            expect(nodes[8].left).toBe(left);
+            expect(nodes[8].right).toBe(right);
             expect((tree as any).__proto__._checkRI()).toBe(true);
         });
     });
