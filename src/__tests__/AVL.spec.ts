@@ -32,6 +32,7 @@ describe('AVL', () => {
         it('should insert nodes into the tree while maintaining the AVL representation invariant', () => {
             const [tree] = createTestTree();
             expect(tree._checkAVLRI()).toBe(true);
+            expect(tree.h < 1.5 * (Math.floor(Math.log2(tree.size)) + 1)).toBe(true);
         });
     });
 

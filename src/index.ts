@@ -34,3 +34,4 @@ console.log(nodes[3].key, nodes[3].stats);
 console.log(nodes[4].key, nodes[4].stats);
 console.log(nodes[5].key, nodes[5].stats);
 console.log(tree._checkAVLRI());
+console.log(tree.size, tree.h);
