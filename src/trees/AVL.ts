@@ -11,6 +11,7 @@ export class AVL<T> extends BST<T> {
         return res;
     }
 
+    // TODO: create AVLNode class and move this method there
     private _checkRIForNode(node: ManagedNode<T, HeightStats> | null): boolean {
         if (!node) return true;
 
@@ -20,6 +21,6 @@ export class AVL<T> extends BST<T> {
     }
 
     _checkRI() {
-        return this._checkRIForNode(this.root as ManagedNode<T, HeightStats>); // todo: pass node type as generic parameter to BST
+        return this._checkRIForNode(this.root as ManagedNode<T, HeightStats>); // TODO: pass node type as generic parameter to BST
     }
 }
