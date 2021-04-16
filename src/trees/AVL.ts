@@ -5,6 +5,8 @@ import { getNodeHeight } from 'src/utils';
 import { BST } from './BST';
 
 export class AVL<T> extends BST<T> {
+    public root: ManagedNode<T, HeightStats> | null = null;
+
     @ManageStats<T, HeightStats>()
     insert(node: ManagedNode<T, HeightStats>) {
         const res = super.insert(node);
@@ -21,6 +23,6 @@ export class AVL<T> extends BST<T> {
     }
 
     _checkRI() {
-        return this._checkRIForNode(this.root as ManagedNode<T, HeightStats>); // TODO: pass node type as generic parameter to BST
+        return this._checkRIForNode(this.root);
     }
 }

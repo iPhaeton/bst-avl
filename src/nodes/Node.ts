@@ -12,7 +12,6 @@ export class Node<T> {
         this.right = null;
     };
 
-    // TODO: return "false" instead of throwing an error
     _checkRI(ancestors: Node<T>[], successorrs: Node<T>[]): boolean {
         if (this.left && this.left.parent !== this) {
             throw new Error(`Representation invariant failed at node ${this.key}. Left child has a wrong parent.`);
