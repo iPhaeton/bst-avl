@@ -1,5 +1,6 @@
 import { BST } from 'src/trees/BST';
 import { Node } from 'src/nodes/Node';
+import { BSTRIAncestorError, BSTRISuccessorError, BSTWrongParentLeftError, BSTWrongParentRightError } from 'src/errors/BST.Error';
 
 const findByKey = (key: number) => (node: Node<any>) => node.key === key;
 
@@ -270,7 +271,7 @@ describe('BST', () => {
             brokenNodeParent.right = brokenNode;
             brokenNode.parent = brokenNodeParent;
 
-            expect(tree._checkRI.bind(tree)).toThrow();
+            expect(tree._checkRI.bind(tree)).toThrow(BSTRISuccessorError);
         });
 
         it('should throw, if a node\'s left child has a wrong parent', () => {
@@ -287,7 +288,7 @@ describe('BST', () => {
             tree.insert(new Node(33, 33));
             brokenNode.parent = null;
 
-            expect(tree._checkRI.bind(tree)).toThrow();
+            expect(tree._checkRI.bind(tree)).toThrow(BSTWrongParentLeftError);
         });
 
         it('should throw, if a node\'s right child has a wrong parent', () => {
@@ -304,7 +305,7 @@ describe('BST', () => {
             tree.insert(new Node(33, 33));
             brokenNode.parent = null;
 
-            expect(tree._checkRI.bind(tree)).toThrow();
+            expect(tree._checkRI.bind(tree)).toThrow(BSTWrongParentRightError);
         });
     });
 });
