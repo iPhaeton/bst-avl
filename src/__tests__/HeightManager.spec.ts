@@ -1,4 +1,4 @@
-import { NodeWithStats } from 'src/nodes/NodeWithStats';
+import { ManagedNode } from 'src/nodes/ManagedNode';
 import { HeightManager } from 'src/stats/HeightManager';
 import { HeightStats } from 'src/types';
 
@@ -16,25 +16,25 @@ describe('HeightManager', () => {
 
     describe('manageStats', () => {
         it('should calculate a node\'s height', () => {
-            const left = new NodeWithStats<number, HeightStats>(1, 1, manager);
-            const right = new NodeWithStats<number, HeightStats>(3, 3, manager);
-            const node = new NodeWithStats<number, HeightStats>(2, 2, manager);
+            const left = new ManagedNode<number, HeightStats>(1, 1, manager);
+            const right = new ManagedNode<number, HeightStats>(3, 3, manager);
+            const node = new ManagedNode<number, HeightStats>(2, 2, manager);
             node.left = left;
             node.right = right;
             left.stats.h = 4;
             right.stats.h = 7;
 
-            expect(node.manageStats()).toEqual({ h: 8 });
+            expect(node.manage()).toEqual({ h: 8 });
         });
 
         it('should calculate a node without children height', () => {
             const left = null;
             const right = null;
-            const node = new NodeWithStats<number, HeightStats>(2, 2, manager);
+            const node = new ManagedNode<number, HeightStats>(2, 2, manager);
             node.left = left;
             node.right = right;
 
-            expect(node.manageStats()).toEqual({ h: 1 });
+            expect(node.manage()).toEqual({ h: 1 });
         })
     });
 });

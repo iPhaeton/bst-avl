@@ -1,27 +1,27 @@
-import { NodeWithStats } from "src/nodes/NodeWithStats";
+import { ManagedNode } from "src/nodes/ManagedNode";
 import { BalanceManager } from "src/stats/BalanceManager";
 import { HeightManager } from "src/stats/HeightManager";
 import { AVL } from "src/trees/AVL";
 import { HeightStats } from "src/types";
 
-const createTestTree = (): [AVL<number>, NodeWithStats<number, HeightStats>[]] => {
+const createTestTree = (): [AVL<number>, ManagedNode<number, HeightStats>[]] => {
     const tree = new AVL<number>();
     const heightManager = new HeightManager<number>();
 
     const nodes = [
-        new NodeWithStats<number, HeightStats>(15, 15, heightManager),
-        new NodeWithStats<number, HeightStats>(10, 10, heightManager),
-        new NodeWithStats<number, HeightStats>(20, 20, heightManager),
-        new NodeWithStats<number, HeightStats>(12, 12, heightManager),
-        new NodeWithStats<number, HeightStats>(14, 14, heightManager),
-        new NodeWithStats<number, HeightStats>(8, 8, heightManager),
-        new NodeWithStats<number, HeightStats>(7, 7, heightManager),
-        new NodeWithStats<number, HeightStats>(9, 9, heightManager),
-        new NodeWithStats<number, HeightStats>(17, 17, heightManager),
-        new NodeWithStats<number, HeightStats>(22, 22, heightManager),
-        new NodeWithStats<number, HeightStats>(16, 16, heightManager),
-        new NodeWithStats<number, HeightStats>(21, 21, heightManager),
-        new NodeWithStats<number, HeightStats>(23, 23, heightManager),
+        new ManagedNode<number, HeightStats>(15, 15, heightManager),
+        new ManagedNode<number, HeightStats>(10, 10, heightManager),
+        new ManagedNode<number, HeightStats>(20, 20, heightManager),
+        new ManagedNode<number, HeightStats>(12, 12, heightManager),
+        new ManagedNode<number, HeightStats>(14, 14, heightManager),
+        new ManagedNode<number, HeightStats>(8, 8, heightManager),
+        new ManagedNode<number, HeightStats>(7, 7, heightManager),
+        new ManagedNode<number, HeightStats>(9, 9, heightManager),
+        new ManagedNode<number, HeightStats>(17, 17, heightManager),
+        new ManagedNode<number, HeightStats>(22, 22, heightManager),
+        new ManagedNode<number, HeightStats>(16, 16, heightManager),
+        new ManagedNode<number, HeightStats>(21, 21, heightManager),
+        new ManagedNode<number, HeightStats>(23, 23, heightManager),
     ];
 
     tree.insert(nodes[0]);

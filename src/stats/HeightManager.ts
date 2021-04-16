@@ -1,13 +1,13 @@
-import { NodeWithStats } from "src/nodes/NodeWithStats";
-import { HeightStats, StatsManager } from "src/types";
+import { ManagedNode } from "src/nodes/ManagedNode";
+import { HeightStats, NodeManager } from "src/types";
 import { getNodeHeight } from "src/utils";
 
-export class HeightManager<T> implements StatsManager<T, HeightStats> {
+export class HeightManager<T> implements NodeManager<ManagedNode<T, HeightStats>, HeightStats> {
     getDefaultStats() {
         return { h: 0 };
     };
 
-    manageStats(node: NodeWithStats<T, HeightStats>) {
+    manage(node: ManagedNode<T, HeightStats>) {
         return {
             h: Math.max(
                 getNodeHeight(node.left),
