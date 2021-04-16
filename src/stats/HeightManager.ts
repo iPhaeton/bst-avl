@@ -2,7 +2,7 @@ import { NodeWithStats } from "src/nodes/NodeWithStats";
 import { HeightStats, StatsManager } from "src/types";
 
 export class HeightManager<T> implements StatsManager<T, HeightStats> {
-    private getNodeHeight(node: NodeWithStats<T, HeightStats> | null) {
+    getHeight(node: NodeWithStats<T, HeightStats> | null) {
         return node?.stats.h || 0;
     }
 
@@ -13,8 +13,8 @@ export class HeightManager<T> implements StatsManager<T, HeightStats> {
     manageStats(node: NodeWithStats<T, HeightStats>) {
         return {
             h: Math.max(
-                this.getNodeHeight(node.left),
-                this.getNodeHeight(node.right),
+                this.getHeight(node.left),
+                this.getHeight(node.right),
             ) + 1
         };
     }
