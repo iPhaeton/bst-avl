@@ -23,8 +23,10 @@ export class AVLNode<T> extends ManagedNode<T, HeightStats> {
     }
 
     _checkAVLRI(): boolean {
-        return Math.abs(getNodeHeight(this.left) - getNodeHeight(this.right)) <= 1 &&
-            (!this.left || this.left._checkAVLRI()) &&
-            (!this.right || this.right._checkAVLRI());
+        if (Math.abs(getNodeHeight(this.left) - getNodeHeight(this.right)) <= 1) {
+            return (!this.left || this.left._checkAVLRI()) && (!this.right || this.right._checkAVLRI());
+        } else {
+            throw new Error(`Representation invariant failed at node ${this.key}. Left child height is ${getNodeHeight(this.left)}, right child height is ${getNodeHeight(this.right)}`);
+        };
     }
 }

@@ -32,4 +32,26 @@ describe('AVL', () => {
             expect(tree._checkAVLRI()).toBe(true);
         });
     });
+
+    describe('_checkAVLRI', () => {
+        it('should return true, if AVL representation invariant is valid', () => {
+            const [tree] = createTestTree();
+
+            expect(tree._checkAVLRI()).toBe(true);
+        });
+
+        it('should throw, if AVL representation invariant is not valid', () => {
+            const [tree, nodes] = createTestTree();
+            nodes[2].stats.h = 3;
+
+            expect(tree._checkAVLRI).toThrow();
+        });
+
+        it('should throw, if _checkRI throws', () => {
+            const [tree] = createTestTree();
+            tree._checkRI = jest.fn(() => {throw new Error('Test error')});
+
+            expect(tree._checkAVLRI).toThrow();
+        })
+    });
 });

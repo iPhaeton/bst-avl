@@ -9,10 +9,6 @@ import { AVLNode } from "./nodes/AVLNode";
 
 const plotter = new Plotter();
 const tree = new AVL<number>();
-const heightManager = new HeightManager<number>();
-const balanceManager = new BalanceManager<number>();
-
-const manager = new Composition(heightManager, balanceManager, heightManager);
 
 const nodes = [
     new AVLNode(1, 1),
