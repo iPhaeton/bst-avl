@@ -26,9 +26,6 @@ export class BalanceManager<T> implements NodeManager<ManagedNode<T, HeightStats
         if (child !== null) {
             child.parent = node;
         };
-
-        node.manage();
-        A.manage();
     };
 
     private rotateRight(node: ManagedNode<T, HeightStats> | null, tree?: Tree<T>) {
