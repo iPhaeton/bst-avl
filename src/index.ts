@@ -21,7 +21,6 @@ tree.insert(nodes[3]);
 tree.insert(nodes[4]);
 tree.insert(nodes[5]);
 
-
 plotter.plot(tree);
 
 // tslint:disable: no-console

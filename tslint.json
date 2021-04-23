@@ -8,7 +8,6 @@
         "no-shadowed-variable": false,
         "no-string-literal": false,
         "only-arrow-functions": false,
-        "max-classes-per-file": false,
-        "no-unused-variable": true
+        "max-classes-per-file": false
     }
 }
