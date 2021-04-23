@@ -13,7 +13,7 @@ describe('Node', () => {
             expect(node.right).toBe(null);
         });
     });
-        
+
     describe('_checkRI', () => {
         it('should compare node with its ancestors and predecessors and return true, if comparison is correct', () => {
             const node = new Node(6, 6);
@@ -39,21 +39,21 @@ describe('Node', () => {
             expect(() => node._checkRI(ancestors, successors)).toThrow();
         });
 
-        it('should throw, if left child\'s parent is not the node', () => {
+        it("should throw, if left child's parent is not the node", () => {
             const node = new Node(6, 6);
             node.left = new Node(5, 5);
 
             expect(() => node._checkRI([], [])).toThrow();
         });
 
-        it('should throw, if right child\'s parent is not the node', () => {
+        it("should throw, if right child's parent is not the node", () => {
             const node = new Node(6, 6);
             node.right = new Node(7, 7);
 
             expect(() => node._checkRI([], [])).toThrow();
         });
 
-        it('should call children\'s _checkRI methods', () => {
+        it("should call children's _checkRI methods", () => {
             const node = new Node(6, 6);
             const leftChild = new Node(1, 1);
             leftChild.parent = node;

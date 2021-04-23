@@ -1,11 +1,11 @@
-import { Plotter } from "./Plotter";
-import { AVL } from "./trees/AVL";
-import { HeightManager } from "./managers/HeightManager";
-import { ManagedNode } from "./nodes/ManagedNode";
-import { HeightStats } from "./types";
-import { BalanceManager } from "./managers/BalanceManager";
-import { Composition } from "./managers/Composition";
-import { AVLNode } from "./nodes/AVLNode";
+import { Plotter } from './Plotter';
+import { AVL } from './trees/AVL';
+import { HeightManager } from './managers/HeightManager';
+import { ManagedNode } from './nodes/ManagedNode';
+import { HeightStats } from './types';
+import { BalanceManager } from './managers/BalanceManager';
+import { Composition } from './managers/Composition';
+import { AVLNode } from './nodes/AVLNode';
 
 const plotter = new Plotter();
 const tree = new AVL<number>();

@@ -15,7 +15,7 @@ export class BST<T> {
         } else {
             return parent[side];
         }
-    };
+    }
 
     private getH(node: Node<any> | null): number {
         if (node === null) {
@@ -25,7 +25,7 @@ export class BST<T> {
             const rightH = 1 + this.getH(node.right);
             return Math.max(leftH, rightH);
         }
-    };
+    }
 
     private getExtremum(node: Node<T> | null, side: ChildSide) {
         while (node !== null) {
@@ -109,14 +109,14 @@ export class BST<T> {
 
         let currentNode: Node<T> | null = this.root;
         while (currentNode !== null) {
-            verbose && console.log(currentNode.key, node.key)
+            verbose && console.log(currentNode.key, node.key);
             if (node.key < currentNode.key) {
                 verbose && console.log('left');
                 currentNode = this.appendOrReturnChild(currentNode, node, 'left');
             } else {
                 verbose && console.log('right');
                 currentNode = this.appendOrReturnChild(currentNode, node, 'right');
-            };
+            }
         }
         return node;
     }

@@ -1,6 +1,11 @@
 import { BST } from 'src/trees/BST';
 import { Node } from 'src/nodes/Node';
-import { BSTRIAncestorError, BSTRISuccessorError, BSTWrongParentLeftError, BSTWrongParentRightError } from 'src/errors/BST.Error';
+import {
+    BSTRIAncestorError,
+    BSTRISuccessorError,
+    BSTWrongParentLeftError,
+    BSTWrongParentRightError,
+} from 'src/errors/BST.Error';
 
 const findByKey = (key: number) => (node: Node<any>) => node.key === key;
 
@@ -17,7 +22,7 @@ const createTestTree = (): [BST<number>, Node<number>[]] => {
         new Node(42, 42),
         new Node(33, 33),
         new Node(44, 44),
-    ]
+    ];
 
     const tree = new BST<number>();
     tree.insert(nodes[0]);
@@ -140,7 +145,7 @@ describe('BST', () => {
             [tree, nodes] = createTestTree();
         });
 
-        it('should return a node\'s successor, when the node has the right child', () => {
+        it("should return a node's successor, when the node has the right child", () => {
             const node = nodes.find(findByKey(23));
             if (!node) throw new Error('Node not found');
 
@@ -148,7 +153,7 @@ describe('BST', () => {
             expect(successor).toBe(nodes.find(findByKey(33)));
         });
 
-        it('should return a node\'s successor, when the node doesn\'t have the right child', () => {
+        it("should return a node's successor, when the node doesn't have the right child", () => {
             const node = nodes.find(findByKey(18));
             if (!node) throw new Error('Node not found');
 
@@ -172,7 +177,7 @@ describe('BST', () => {
             [tree, nodes] = createTestTree();
         });
 
-        it('should return a node\'s predecessor, when the node has the left child', () => {
+        it("should return a node's predecessor, when the node has the left child", () => {
             const node = nodes.find(findByKey(23));
             if (!node) throw new Error('Node not found');
 
@@ -180,7 +185,7 @@ describe('BST', () => {
             expect(predecessor).toBe(nodes.find(findByKey(18)));
         });
 
-        it('should return a node\'s predecessor, when the node doesn\'t have the left child', () => {
+        it("should return a node's predecessor, when the node doesn't have the left child", () => {
             const node = nodes.find(findByKey(14));
             if (!node) throw new Error('Node not found');
 
@@ -274,7 +279,7 @@ describe('BST', () => {
             expect(tree._checkRI.bind(tree)).toThrow(BSTRISuccessorError);
         });
 
-        it('should throw, if a node\'s left child has a wrong parent', () => {
+        it("should throw, if a node's left child has a wrong parent", () => {
             const tree = new BST();
             tree.insert(new Node(23, 23));
             tree.insert(new Node(8, 8));
@@ -291,7 +296,7 @@ describe('BST', () => {
             expect(tree._checkRI.bind(tree)).toThrow(BSTWrongParentLeftError);
         });
 
-        it('should throw, if a node\'s right child has a wrong parent', () => {
+        it("should throw, if a node's right child has a wrong parent", () => {
             const tree = new BST();
             tree.insert(new Node(23, 23));
             tree.insert(new Node(8, 8));

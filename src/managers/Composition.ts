@@ -13,8 +13,8 @@ export class Composition<T, Stats> implements NodeManager<ManagedNode<T, Stats>,
     }
 
     manage(node: ManagedNode<T, Stats>, tree?: Tree<T>) {
-        const s = this.managers.map(m => m.manage(node, tree));
-        const stats = s.reduce((res, s) => ({...res, ...s}), {});
+        const s = this.managers.map((m) => m.manage(node, tree));
+        const stats = s.reduce((res, s) => ({ ...res, ...s }), {});
         return stats;
     }
 }

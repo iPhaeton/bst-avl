@@ -1,10 +1,10 @@
-import { AVLRIError } from "src/errors/AVL.errors";
-import { BalanceManager } from "src/managers/BalanceManager";
-import { Composition } from "src/managers/Composition";
-import { HeightManager } from "src/managers/HeightManager";
-import { HeightStats } from "src/types";
-import { getNodeHeight } from "src/utils";
-import { ManagedNode } from "./ManagedNode";
+import { AVLRIError } from 'src/errors/AVL.errors';
+import { BalanceManager } from 'src/managers/BalanceManager';
+import { Composition } from 'src/managers/Composition';
+import { HeightManager } from 'src/managers/HeightManager';
+import { HeightStats } from 'src/types';
+import { getNodeHeight } from 'src/utils';
+import { ManagedNode } from './ManagedNode';
 
 export class AVLNode<T> extends ManagedNode<T, HeightStats> {
     public parent: AVLNode<T> | null;
@@ -27,7 +27,11 @@ export class AVLNode<T> extends ManagedNode<T, HeightStats> {
         if (Math.abs(getNodeHeight(this.left) - getNodeHeight(this.right)) <= 1) {
             return (!this.left || this.left._checkAVLRI()) && (!this.right || this.right._checkAVLRI());
         } else {
-            throw new AVLRIError(`Representation invariant failed at node ${this.key}. Left child height is ${getNodeHeight(this.left)}, right child height is ${getNodeHeight(this.right)}`);
-        };
+            throw new AVLRIError(
+                `Representation invariant failed at node ${this.key}. Left child height is ${getNodeHeight(
+                    this.left,
+                )}, right child height is ${getNodeHeight(this.right)}`,
+            );
+        }
     }
 }

@@ -1,9 +1,9 @@
-import { ManagedNode } from "src/nodes/ManagedNode";
-import { BalanceManager } from "src/managers/BalanceManager";
-import { HeightManager } from "src/managers/HeightManager";
-import { AVL } from "src/trees/AVL";
-import { HeightStats } from "src/types";
-import { AVLNode } from "src/nodes/AVLNode";
+import { ManagedNode } from 'src/nodes/ManagedNode';
+import { BalanceManager } from 'src/managers/BalanceManager';
+import { HeightManager } from 'src/managers/HeightManager';
+import { AVL } from 'src/trees/AVL';
+import { HeightStats } from 'src/types';
+import { AVLNode } from 'src/nodes/AVLNode';
 
 const createTestTree = (): [AVL<number>, ManagedNode<number, HeightStats>[]] => {
     const tree = new AVL<number>();
@@ -38,7 +38,6 @@ const createTestTree = (): [AVL<number>, ManagedNode<number, HeightStats>[]] => 
     tree.insert(nodes[10]);
     tree.insert(nodes[11]);
     tree.insert(nodes[12]);
-
 
     return [tree, nodes];
 };

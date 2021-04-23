@@ -14,6 +14,6 @@ export function ManageStats<T, Stats>() {
             }
 
             return result;
-        }
-    }
+        };
+    };
 }

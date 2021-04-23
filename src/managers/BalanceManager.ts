@@ -1,6 +1,6 @@
-import { ChildSide, HeightStats, NodeManager, Tree } from "src/types";
-import { getNodeHeight, getOppositeSide } from "src/utils";
-import { ManagedNode } from "../nodes/ManagedNode";
+import { ChildSide, HeightStats, NodeManager, Tree } from 'src/types';
+import { getNodeHeight, getOppositeSide } from 'src/utils';
+import { ManagedNode } from '../nodes/ManagedNode';
 
 export class BalanceManager<T> implements NodeManager<ManagedNode<T, HeightStats>, {}> {
     private rotate(node: ManagedNode<T, HeightStats>, tree: Tree<T>, side: ChildSide) {
@@ -22,11 +22,11 @@ export class BalanceManager<T> implements NodeManager<ManagedNode<T, HeightStats
         node[oppositeSide] = A[side];
         A[side] = node;
 
-        const child = node[oppositeSide]
+        const child = node[oppositeSide];
         if (child !== null) {
             child.parent = node;
-        };
-    };
+        }
+    }
 
     private rotateRight(node: ManagedNode<T, HeightStats> | null, tree?: Tree<T>) {
         if (!node || !tree) return;
@@ -60,7 +60,7 @@ export class BalanceManager<T> implements NodeManager<ManagedNode<T, HeightStats
                 this.rotateRight(node.right, tree);
                 this.rotateLeft(node, tree);
             }
-        };
+        }
         return {};
     }
 }

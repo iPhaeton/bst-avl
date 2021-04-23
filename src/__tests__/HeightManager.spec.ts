@@ -15,7 +15,7 @@ describe('HeightManager', () => {
     });
 
     describe('manageStats', () => {
-        it('should calculate a node\'s height', () => {
+        it("should calculate a node's height", () => {
             const left = new ManagedNode<number, HeightStats>(1, 1, manager);
             const right = new ManagedNode<number, HeightStats>(3, 3, manager);
             const node = new ManagedNode<number, HeightStats>(2, 2, manager);
@@ -35,6 +35,6 @@ describe('HeightManager', () => {
             node.right = right;
 
             expect(node.manage()).toEqual({ h: 1 });
-        })
+        });
     });
 });

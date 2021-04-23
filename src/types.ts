@@ -1,4 +1,4 @@
-import { Node } from "./nodes/Node";
+import { Node } from './nodes/Node';
 
 export interface Tree<T> {
     root: Node<T> | null;
@@ -8,7 +8,7 @@ export interface Tree<T> {
 
 export interface PlotterInterface<Tree> {
     plot: (tree: Tree) => void;
-};
+}
 
 export type ChildSide = 'left' | 'right';
 

@@ -1,9 +1,9 @@
-import { AVLRIError } from "src/errors/AVL.errors";
-import { BSTRISuccessorError } from "src/errors/BST.Error";
-import { AVLNode } from "src/nodes/AVLNode";
-import { ManagedNode } from "src/nodes/ManagedNode";
-import { AVL } from "src/trees/AVL";
-import { HeightStats } from "src/types";
+import { AVLRIError } from 'src/errors/AVL.errors';
+import { BSTRISuccessorError } from 'src/errors/BST.Error';
+import { AVLNode } from 'src/nodes/AVLNode';
+import { ManagedNode } from 'src/nodes/ManagedNode';
+import { AVL } from 'src/trees/AVL';
+import { HeightStats } from 'src/types';
 
 const createTestTree = (): [AVL<number>, ManagedNode<number, HeightStats>[]] => {
     const tree = new AVL<number>();
@@ -25,7 +25,7 @@ const createTestTree = (): [AVL<number>, ManagedNode<number, HeightStats>[]] => 
     tree.insert(nodes[5]);
 
     return [tree, nodes];
-}
+};
 
 describe('AVL', () => {
     describe('insert', () => {
@@ -52,9 +52,11 @@ describe('AVL', () => {
 
         it('should throw, if _checkRI throws', () => {
             const [tree] = createTestTree();
-            tree._checkRI = jest.fn(() => { throw new BSTRISuccessorError('Test error') });
+            tree._checkRI = jest.fn(() => {
+                throw new BSTRISuccessorError('Test error');
+            });
 
             expect(tree._checkAVLRI.bind(tree)).toThrow(BSTRISuccessorError);
-        })
+        });
     });
 });

@@ -1,4 +1,4 @@
-import { getOppositeSide, getSpaces } from "src/utils";
+import { getOppositeSide, getSpaces } from 'src/utils';
 
 describe('getSpaces', () => {
     it('should return a string of a certain amount of spaces', () => {
