@@ -17,8 +17,11 @@ export class Plotter<T extends Tree<any>> implements PlotterInterface<T> {
                 children: [],
             } as { line: string; children: Array<Node<any> | null> },
         );
+        // tslint:disable-next-line: no-console
         console.log(line);
+        // tslint:disable-next-line: no-console
         console.log('');
+        // tslint:disable-next-line: no-console
         console.log('');
 
         if (children.some((n) => n !== null)) {
@@ -27,6 +30,6 @@ export class Plotter<T extends Tree<any>> implements PlotterInterface<T> {
     }
 
     plot(tree: T) {
-        tree.root && this.plotNodes([tree.root], 0, tree.h);
+        if (tree.root) this.plotNodes([tree.root], 0, tree.h);
     }
 }

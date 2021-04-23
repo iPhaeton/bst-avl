@@ -1,7 +1,6 @@
 import { BST } from 'src/trees/BST';
 import { Node } from 'src/nodes/Node';
 import {
-    BSTRIAncestorError,
     BSTRISuccessorError,
     BSTWrongParentLeftError,
     BSTWrongParentRightError,

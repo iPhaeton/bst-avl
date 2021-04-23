@@ -1,6 +1,5 @@
 import { ManageStats } from 'src/decorators/stats';
 import { AVLNode } from 'src/nodes/AVLNode';
-import { ManagedNode } from 'src/nodes/ManagedNode';
 import { HeightStats } from 'src/types';
 import { BST } from './BST';
 

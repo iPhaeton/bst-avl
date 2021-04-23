@@ -1,10 +1,5 @@
 import { Plotter } from './Plotter';
 import { AVL } from './trees/AVL';
-import { HeightManager } from './managers/HeightManager';
-import { ManagedNode } from './nodes/ManagedNode';
-import { HeightStats } from './types';
-import { BalanceManager } from './managers/BalanceManager';
-import { Composition } from './managers/Composition';
 import { AVLNode } from './nodes/AVLNode';
 
 const plotter = new Plotter();
@@ -26,7 +21,10 @@ tree.insert(nodes[3]);
 tree.insert(nodes[4]);
 tree.insert(nodes[5]);
 
+
 plotter.plot(tree);
+
+// tslint:disable: no-console
 console.log(nodes[0].key, nodes[0].stats);
 console.log(nodes[1].key, nodes[1].stats);
 console.log(nodes[2].key, nodes[2].stats);

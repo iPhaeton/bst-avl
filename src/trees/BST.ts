@@ -109,12 +109,15 @@ export class BST<T> {
 
         let currentNode: Node<T> | null = this.root;
         while (currentNode !== null) {
-            verbose && console.log(currentNode.key, node.key);
+            // tslint:disable-next-line: no-console
+            if (verbose) console.log(currentNode.key, node.key);
             if (node.key < currentNode.key) {
-                verbose && console.log('left');
+                // tslint:disable-next-line: no-console
+                if (verbose) console.log('left');
                 currentNode = this.appendOrReturnChild(currentNode, node, 'left');
             } else {
-                verbose && console.log('right');
+                // tslint:disable-next-line: no-console
+                if (verbose) console.log('right');
                 currentNode = this.appendOrReturnChild(currentNode, node, 'right');
             }
         }
