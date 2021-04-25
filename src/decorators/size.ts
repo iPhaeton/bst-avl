@@ -1,4 +1,4 @@
-import { Tree } from 'src/types';
+import { Tree } from '../types';
 
 export function ChangeSize(changeSizeFn: (size: number) => number) {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {

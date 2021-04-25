@@ -1,9 +1,9 @@
-import { AVLRIError } from 'src/errors/AVL.errors';
-import { BalanceManager } from 'src/managers/BalanceManager';
-import { Composition } from 'src/managers/Composition';
-import { HeightManager } from 'src/managers/HeightManager';
-import { HeightStats } from 'src/types';
-import { getNodeHeight } from 'src/utils';
+import { AVLRIError } from '../errors/AVL.errors';
+import { BalanceManager } from '../managers/BalanceManager';
+import { Composition } from '../managers/Composition';
+import { HeightManager } from '../managers/HeightManager';
+import { HeightStats } from '../types';
+import { getNodeHeight } from '../utils';
 import { ManagedNode } from './ManagedNode';
 
 export class AVLNode<T> extends ManagedNode<T, HeightStats> {

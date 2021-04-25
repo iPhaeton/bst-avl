@@ -1,5 +1,5 @@
-import { ManagedNode } from 'src/nodes/ManagedNode';
-import { NodeManager, Tree } from 'src/types';
+import { ManagedNode } from '../nodes/ManagedNode';
+import { NodeManager, Tree } from '../types';
 
 export class Composition<T, Stats> implements NodeManager<ManagedNode<T, Stats>, Stats> {
     private readonly managers: NodeManager<ManagedNode<T, Stats>, any>[];

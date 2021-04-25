@@ -1,6 +1,6 @@
-import { BST } from 'src/trees/BST';
-import { Node } from 'src/nodes/Node';
-import { BSTRISuccessorError, BSTWrongParentLeftError, BSTWrongParentRightError } from 'src/errors/BST.Error';
+import { BST } from '../trees/BST';
+import { Node } from '../nodes/Node';
+import { BSTRISuccessorError, BSTWrongParentLeftError, BSTWrongParentRightError } from '../errors/BST.Error';
 
 const findByKey = (key: number) => (node: Node<any>) => node.key === key;
 

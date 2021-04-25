@@ -1,5 +1,5 @@
 import { Node } from './Node';
-import { IManagedNode, NodeManager, Tree } from 'src/types';
+import { IManagedNode, NodeManager, Tree } from '../types';
 
 export class ManagedNode<T, Stats> extends Node<T> implements IManagedNode<T, Stats> {
     public parent: ManagedNode<T, Stats> | null;

@@ -3,7 +3,7 @@ import {
     BSTRISuccessorError,
     BSTWrongParentLeftError,
     BSTWrongParentRightError,
-} from 'src/errors/BST.Error';
+} from '../errors/BST.Error';
 
 export class Node<T> {
     public parent: Node<T> | null;

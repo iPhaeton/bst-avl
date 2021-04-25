@@ -1,6 +1,6 @@
-import { ManageStats } from 'src/decorators/stats';
-import { AVLNode } from 'src/nodes/AVLNode';
-import { HeightStats } from 'src/types';
+import { ManageStats } from '../decorators/stats';
+import { AVLNode } from '../nodes/AVLNode';
+import { HeightStats } from '../types';
 import { BST } from './BST';
 
 export class AVL<T> extends BST<T> {

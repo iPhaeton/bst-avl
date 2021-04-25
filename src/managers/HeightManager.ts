@@ -1,6 +1,6 @@
-import { ManagedNode } from 'src/nodes/ManagedNode';
-import { HeightStats, NodeManager } from 'src/types';
-import { getNodeHeight } from 'src/utils';
+import { ManagedNode } from '../nodes/ManagedNode';
+import { HeightStats, NodeManager } from '../types';
+import { getNodeHeight } from '../utils';
 
 export class HeightManager<T> implements NodeManager<ManagedNode<T, HeightStats>, HeightStats> {
     getDefaultStats() {

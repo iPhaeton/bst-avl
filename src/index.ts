@@ -1,5 +1,3 @@
-import 'module-alias/register';
-
 export * from './trees/AVL';
 export * from './trees/BST';
 export * from './nodes/AVLNode';

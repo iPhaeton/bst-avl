@@ -1,5 +1,5 @@
-import { ChildSide, HeightStats, NodeManager, Tree } from 'src/types';
-import { getNodeHeight, getOppositeSide } from 'src/utils';
+import { ChildSide, HeightStats, NodeManager, Tree } from '../types';
+import { getNodeHeight, getOppositeSide } from '../utils';
 import { ManagedNode } from '../nodes/ManagedNode';
 
 export class BalanceManager<T> implements NodeManager<ManagedNode<T, HeightStats>, {}> {

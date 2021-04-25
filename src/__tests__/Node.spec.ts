@@ -1,4 +1,4 @@
-import { Node } from 'src/nodes/Node';
+import { Node } from '../nodes/Node';
 
 describe('Node', () => {
     describe('constructor', () => {

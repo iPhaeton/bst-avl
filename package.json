@@ -51,13 +51,7 @@
     "lint-staged": {
         "*.ts": [
             "npm run format",
-            "npm run lint"
+            "tslint"
         ]
-    },
-    "dependencies": {
-        "module-alias": "^2.2.2"
-    },
-    "_moduleAliases": {
-        "src": "lib"
     }
 }

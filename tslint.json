@@ -9,5 +9,6 @@
         "no-string-literal": false,
         "only-arrow-functions": false,
         "max-classes-per-file": false
-    }
+    },
+    "exclude": ["./src/__tests__"]
 }

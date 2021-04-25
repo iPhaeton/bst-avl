@@ -1,5 +1,5 @@
-import { ManagedNode } from 'src/nodes/ManagedNode';
-import { Tree } from 'src/types';
+import { ManagedNode } from '../nodes/ManagedNode';
+import { Tree } from '../types';
 
 export function ManageStats<T, Stats>() {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {

@@ -1,9 +1,9 @@
-import { AVLRIError } from 'src/errors/AVL.errors';
-import { BSTRISuccessorError } from 'src/errors/BST.Error';
-import { AVLNode } from 'src/nodes/AVLNode';
-import { ManagedNode } from 'src/nodes/ManagedNode';
-import { AVL } from 'src/trees/AVL';
-import { HeightStats } from 'src/types';
+import { AVLRIError } from '../errors/AVL.errors';
+import { BSTRISuccessorError } from '../errors/BST.Error';
+import { AVLNode } from '../nodes/AVLNode';
+import { ManagedNode } from '../nodes/ManagedNode';
+import { AVL } from '../trees/AVL';
+import { HeightStats } from '../types';
 
 const createTestTree = (): [AVL<number>, ManagedNode<number, HeightStats>[]] => {
     const tree = new AVL<number>();
