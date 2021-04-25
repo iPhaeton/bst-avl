@@ -1,6 +1,6 @@
 {
     "name": "bst-avl",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Balanced binary search tree (AVL implementation)",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
