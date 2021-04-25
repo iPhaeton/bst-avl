@@ -2,7 +2,8 @@
     "name": "bst-avl",
     "version": "1.0.0",
     "description": "Balanced binary search tree (AVL implementation)",
-    "main": "index.js",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
     "scripts": {
         "exec": "ts-node -r tsconfig-paths/register",
         "test": "jest '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$' --config jestconfig.json",
@@ -10,7 +11,9 @@
         "build": "tsc",
         "format": "prettier --write \"src/**/*.ts\"",
         "lint": "tslint -p tsconfig.json",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "prepublishOnly": "npm run lint && npm run format && npm test",
+        "postversion": "git push && git push --tags"
     },
     "repository": {
         "type": "git",
