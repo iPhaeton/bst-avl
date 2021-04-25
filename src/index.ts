@@ -1,34 +1,13 @@
-import { Plotter } from './Plotter';
-import { AVL } from './trees/AVL';
-import { AVLNode } from './nodes/AVLNode';
-
-const plotter = new Plotter();
-const tree = new AVL<number>();
-
-const nodes = [
-    new AVLNode(1, 1),
-    new AVLNode(10, 10),
-    new AVLNode(20, 20),
-    new AVLNode(25, 25),
-    new AVLNode(30, 30),
-    new AVLNode(35, 35),
-];
-
-tree.insert(nodes[0]);
-tree.insert(nodes[1]);
-tree.insert(nodes[2]);
-tree.insert(nodes[3]);
-tree.insert(nodes[4]);
-tree.insert(nodes[5]);
-
-plotter.plot(tree);
-
-// tslint:disable: no-console
-console.log(nodes[0].key, nodes[0].stats);
-console.log(nodes[1].key, nodes[1].stats);
-console.log(nodes[2].key, nodes[2].stats);
-console.log(nodes[3].key, nodes[3].stats);
-console.log(nodes[4].key, nodes[4].stats);
-console.log(nodes[5].key, nodes[5].stats);
-console.log(tree._checkAVLRI());
-console.log(tree.size, tree.h);
+export * from './trees/AVL';
+export * from './trees/BST';
+export * from './nodes/AVLNode';
+export * from './nodes/ManagedNode';
+export * from './nodes/Node';
+export * from './managers/BalanceManager';
+export * from './managers/Composition';
+export * from './managers/HeightManager';
+export * from './errors/AVL.errors';
+export * from './errors/BST.Error';
+export * from './decorators/size';
+export * from './decorators/stats';
+export * from './utils';
