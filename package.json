@@ -53,5 +53,11 @@
             "npm run format",
             "npm run lint"
         ]
+    },
+    "dependencies": {
+        "module-alias": "^2.2.2"
+    },
+    "_moduleAliases": {
+        "src": "lib"
     }
 }
